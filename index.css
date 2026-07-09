@@ -1,27 +1,31 @@
 header{
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    margin: 0px;
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('ImgHeader/OrganitatorsCountry.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
-}
-
-img.BackgroundImage{
-    margin-bottom: -50px; /*Encaja el nav*/
-    width: auto;
-    height: 100%;
+    margin-bottom: 0px;
 }
 
 div.TittleAndLogo{
+    
     display: flex;
     align-items: center;
+    gap: 20px;
+    
 }
+    img.loogoWorldCupOfHeader{
+        width: auto;
+        height: 100px;
+    }
 
-img.loogoWorldCupOfHeader{
-    width: auto;
-    height: 200px;
-}
+    h1.TittleOfHeader{
+        color: white;
 
-h1.TittleOfHeader{
-    color: white;
-
-    text-size-adjust: 20px;
-}
+        font-size: 50PX;
+    }
