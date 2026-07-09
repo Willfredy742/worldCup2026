@@ -1,7 +1,6 @@
 header{
-    height: 300px;
+    height: 250px;
     display: flex;
-    align-items: center;
     justify-content: center;
 
     background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('ImgHeader/OrganitatorsCountry.png');
@@ -9,14 +8,15 @@ header{
     background-position: center;
     background-repeat: no-repeat;
 
-    margin-bottom: 0px;
+    margin-bottom: -60px;
 }
 
 div.TittleAndLogo{
     
+    margin-top: -60px;
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 25px;
     
 }
     img.loogoWorldCupOfHeader{
@@ -27,5 +27,12 @@ div.TittleAndLogo{
     h1.TittleOfHeader{
         color: white;
 
+        font-family: "Inter", sans-serif;
         font-size: 50PX;
+
+        text-shadow: 2px 2px 4px #c5c5c5,
+        -1px -1px 0 black,
+        1px -1px 0 black,
+        -1px  1px 0 black,
+        1px  1px 0 black;
     }
