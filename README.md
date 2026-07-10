@@ -1,4 +1,4 @@
-﻿# worldCup2026
+﻿# FIFA World Cup 2026
 Proyecto web informativo sobre la **FIFA World Cup 2026**, desarrollado como parte de un trabajo colaborativo usando **HTML, CSS y JavaScript**.
 
 La web permitirá consultar información principal del torneo, próximos partidos, resultados, clasificación por grupos, árbol de eliminatorias y estadísticas relevantes.
