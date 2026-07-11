@@ -14,3 +14,23 @@ hr.Empty50px{
     height: 50px;
 }
 
+div.GroupContent{
+    background-color: #E61D25;
+
+    display: flex;
+    flex-direction: column;
+}
+
+section.GroupTittle{
+    background-color: grey;
+
+    display: flex;
+    gap: 50px;
+}
+
+section.GroupData{
+
+    background-color: blue;
+    display: flex;
+    gap: 50px;
+}
