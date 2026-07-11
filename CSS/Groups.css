@@ -1,4 +1,16 @@
+div.divNav{
+    background-color: #E61D25;
+    padding: 10px 25px 10px 25px;
+    border-radius: 12px;
+}
+
+a.aNav{
+    text-decoration: none;
+    color: white;
+}
+
 hr.Empty50px{
     border: none;
     height: 50px;
 }
+
