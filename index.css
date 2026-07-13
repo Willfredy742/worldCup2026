@@ -3,6 +3,7 @@ header{
     display: flex;
     justify-content: center;
 
+
     background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('ImgHeader/OrganitatorsCountry.png');
     background-size: cover;
     background-position: center;
@@ -10,6 +11,36 @@ header{
 
     margin-bottom: -60px;
 }
+
+body{
+    margin: 0px;
+}
+
+div.TittleAndLogo{
+    
+    margin-top: -60px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    
+}
+    img.loogoWorldCupOfHeader{
+        width: auto;
+        height: 100px;
+    }
+
+    h1.TittleOfHeader{
+        color: #FFD700;
+
+        font-family: "Inter", sans-serif;
+        font-size: 50PX;
+
+        text-shadow:
+        -1px -1px 0 black,
+        1px -1px 0 black,
+        -1px  1px 0 black,
+        1px  1px 0 black;
+    }
 
 nav{
     display: flex;
@@ -27,29 +58,3 @@ button.ButtonNav{
     font-size: 18px;
     text-decoration: none;
 }
-
-div.TittleAndLogo{
-    
-    margin-top: -60px;
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    
-}
-    img.loogoWorldCupOfHeader{
-        width: auto;
-        height: 100px;
-    }
-
-    h1.TittleOfHeader{
-        color: white;
-
-        font-family: "Inter", sans-serif;
-        font-size: 50PX;
-
-        text-shadow: 2px 2px 4px #c5c5c5,
-        -1px -1px 0 black,
-        1px -1px 0 black,
-        -1px  1px 0 black,
-        1px  1px 0 black;
-    }
