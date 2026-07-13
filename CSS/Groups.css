@@ -31,11 +31,11 @@ h1.NameSection{
 
 div.AllTables{
     display: flex;
-
     justify-content: space-around;
     flex-wrap: wrap;
-
     gap: 25px;
+
+    margin-bottom: 20px;
 }
 
 div.BodyTable{
