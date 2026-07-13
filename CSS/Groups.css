@@ -1,5 +1,8 @@
 body{
     background-color: #d1d4d1;
+    min-width: 800px;
+
+    font-family: inter;
 }
 
 main{
@@ -20,6 +23,15 @@ div.divNav{
 hr.Empty50px{
     border: none;
     height: 50px;
+}
+
+div.AllTables{
+    display: flex;
+
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    gap: 50px;
 }
 
 div.BodyTable{
@@ -53,6 +65,8 @@ table.TableGroup{
         background-color: white;
 
         border-collapse: collapse;
+
+        font-size: 12px;
     }
 
         td.Pos{
@@ -60,16 +74,25 @@ table.TableGroup{
         }
 
         td.Country{
-            width: 200px;
+            width: 100px;
+            height: auto;
             text-align: left;
         }
 
-        td.Goals{
-            width: 50px;
+        td.Victory{
+            width: fit-content;
+        }
+
+        td.Tie{
+            width: fit-content;
+        }
+
+        td.Defeats{
+            width: fit-content;
         }
 
         td.Points{
-            widht: 50px;
+            width: fit-content;
         }
 
     img.FlagCountry{
