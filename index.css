@@ -44,8 +44,11 @@ div.TittleAndLogo{
 
 nav{
     display: flex;
-    justify-content: center;
-    gap: 150px;
+    justify-content: space-between;
+    
+    margin-left: 50px;
+    margin-right: 50px;
+    gap: 20px;
 }
 
 button.ButtonNav{

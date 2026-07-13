@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <title>World Cup 2026</title>>
+    <title>World Cup 2026</title>
     <link rel="stylesheet" href="../index.css">
     <link rel="stylesheet" href="../CSS/Groups.css">
 </head>
@@ -37,31 +37,28 @@
         <div class="divNav">
             <a class="aNav" href="">Estadisticas</a>
         </div>
-        
     </nav>
 
     <main>
 
         <hr class="Empty50px">
 
-        <div class="GroupA">
-            <h2>Grupo A</h2>
-            <div class="GroupContent">
-                <section class="GroupTittle">
-                    <p class="Tittle">Pos.</p>
-                    <p class="Tittle">Selección</p>
-                    <p class="Tittle">Goles</p>
-                    <p class="Tittle">Puntos</p>
-                </section>
-                <section class="GroupData">
-                    <P class="Data">N/A</P>
-                    <p class="Data">N/A</p>
-                    <p class="Data">N/A</p>
-                    <p class="Data">N/A</p>
-                </section>
-            </div>
-        </div>
+        <table class="TableGroup">
+            <caption class="TittleGroup">Grupo A</caption>
 
+            <thead>
+                <tr>
+                    <th scope="TittleColumn">Pos.</th>
+                    <th scope="TittleColumn">País</th>
+                    <th scope="TittleColumn">Goles</th>
+                    <th scope="TittleColumn">Pts</th>
+                </tr>
+            </thead>
+
+            <tbody id="BodyTableInfo">
+            <!-- Las filas de datos van aquí -->
+            </tbody>
+        </table>
     </main>
 
     <footer></footer>
