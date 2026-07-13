@@ -20,11 +20,14 @@ table.TableGroup{
 }
 
     caption.TittleGroup{
-
+        text-align: left;
+        font-weight: bold;
     }
 
+    td,
     th.TittleColumn{
-
+        padding: 12px;
+        text-align: center;
     }
 
     tbody.BodytableInfo{
