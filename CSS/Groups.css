@@ -25,13 +25,17 @@ hr.Empty50px{
     height: 50px;
 }
 
+h1.NameSection{
+    margin-left: 20px;
+}
+
 div.AllTables{
     display: flex;
 
     justify-content: space-around;
     flex-wrap: wrap;
 
-    gap: 50px;
+    gap: 25px;
 }
 
 div.BodyTable{
@@ -64,20 +68,36 @@ table.TableGroup{
     tbody.BodyTableInfo{
         background-color: white;
 
+        
         border-collapse: collapse;
-
-        font-size: 12px;
+        font-size: 16px;
     }
 
         td.Pos{
-            width: 50px;
+            width: fit-content;
         }
 
         td.Country{
-            width: 100px;
-            height: auto;
+            width: 150px;
             text-align: left;
+
+            font-size: 15px;
         }
+
+            div.CountryData{
+                display: flex;
+
+                align-items: center;
+                justify-content: left;
+                gap: 5px;
+            }
+
+                img.FlagCountry{
+                    width: 40px; 
+                    height: auto;
+
+                    border-radius: 5px;
+                }
 
         td.Victory{
             width: fit-content;
@@ -91,11 +111,10 @@ table.TableGroup{
             width: fit-content;
         }
 
-        td.Points{
+        td.Goals{
             width: fit-content;
         }
 
-    img.FlagCountry{
-        width: 28px; 
-        height: 18px;
-    }
+        td.Points{
+            width: fit-content;
+        }
