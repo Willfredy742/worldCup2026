@@ -42,22 +42,14 @@ div.TittleAndLogo{
         1px  1px 0 black;
     }
 
-nav{
-    display: flex;
-    justify-content: space-between;
-    
-    margin-left: 50px;
-    margin-right: 50px;
-    gap: 20px;
-}
 
-button.ButtonNav{
+div.divNav{
     background-color: #E61D25;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    padding: 5px 20px 5px 20px;
-
-    font-size: 18px;
-    text-decoration: none;
+    padding: 10px 25px 10px 25px;
+    border-radius: 12px;
 }
+
+    a.aNav{
+        text-decoration: none;
+        color: white;
+    }
