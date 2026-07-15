@@ -6,15 +6,22 @@ Grupos
 https://api.football-data.org/v4/competitions/WC/matches?season=2026&stage=GROUP_STAGE
 */
 
+const UrlApi = "e852d958e573426cb8cad7477a88e468"
 const InfoGroupsURL = "https://api.football-data.org/v4/competitions/WC/standings?season=2026";
 const GroupsURL = "https://api.football-data.org/v4/competitions/WC/matches?season=2026&stage=GROUP_STAGE";
+
+const Respuesta = await fetch(UrlApi, {
+    headers: {
+    "X-Auth-Token": X-Auth-Token   // el nombre exacto lo dice tu API
+    }
+});
 
 
 
 function CreateTittleGroups({group}){
     return `
 
-    <caption class="TittleGroup">$group</caption>
+    <caption class="TittleGroup">${group}</caption>
 
     `;
 }
