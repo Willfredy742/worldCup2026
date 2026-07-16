@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Copa del Mundo 2026</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <header class="startHeader">
+      <h1>Bienvenidos a la Copa del Mundo 2026</h1>
+      <p>
+        Explora la emoción del torneo de fútbol más grande del planeta. Sigue de
+        cerca a tus selecciones favoritas, mantente al tanto de los resultados
+        en tiempo real y analiza las clasificaciones de cada grupo. Toda la
+        información de la cita mundialista en Norteamérica, directo desde
+        nuestra plataforma interactiva.
+      </p>
+    </header>
+    <main>
+      <section class="matchesPanel">
+        <div class="matchesGrid">
+          <div class="pastMatches past">
+            <span class="statusPast">Pasado</span>
+            <div class="teamsVersusPast">
+              <img id="pastHomeLogo" src="" alt="Local" />
+              <span class="vsText">VS</span>
+              <img id="pastAwayLogo" src="" alt="Visitante" />
+            </div>
+            <div class="scorePast" id="past-score">-</div>
+          </div>
+
+          <div class="currentMatches current">
+            <span class="statusCurrent">Actual</span>
+            <div class="teamsVersusCurrent">
+              <img id="currentHomeLogo" src="" alt="Local" />
+              <span class="vsText">VS</span>
+              <img id="currentAwayLogo" src="" alt="Visitante" />
+            </div>
+            <div class="scoreCurrent" id="current-score">-</div>
+          </div>
+
+          <div class="futureMatches future">
+            <span class="statusFuture">Próximo</span>
+            <div class="teamsVersusFuture">
+              <img id="futureHomeLogo" src="" alt="Local" />
+              <span class="vsText">VS</span>
+              <img id="futureAwayLogo" src="" alt="Visitante" />
+            </div>
+            <div class="timeFuture" id="future-time">-</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="topPlayersSection">
+        <h2>Top 3 Jugadores</h2>
+
+        <div class="topPlayersContainer">
+          <div class="podiumVisual">
+            <div class="podiumWrapper">
+              <img src="img/podium.png" alt="Podio" class="podiumBg" />
+
+              <div class="playerOnPodium posSecond">
+                <img id="playerTwoPhoto" src="" alt="" class="playerPhoto" />
+              </div>
+
+              <div class="playerOnPodium posFirst">
+                <img id="playerOnePhoto" src="" alt="" class="playerPhoto" />
+              </div>
+
+              <div class="playerOnPodium posThird">
+                <img id="playerThreePhoto" src="" alt="" class="playerPhoto" />
+              </div>
+            </div>
+          </div>
+          <div class="statsTableContainer">
+            <table class="statsTable">
+              <thead>
+                <tr>
+                  <th class="colStatsPlayer"></th>
+                  <th>Goles</th>
+                  <th>Asistencias</th>
+                  <th>Minutos Jugados</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="playerDetail">
+                    <span class="statsName" id="playerOneName">-</span>
+                    <span class="statsMeta" id="playerOneMeta">-</span>
+                  </td>
+                  <td class="statNumber" id="playerOneGoals">-</td>
+                  <td class="statNumber" id="playerOneAssists">-</td>
+                  <td class="statNumber" id="playerOneMinutes">-</td>
+                </tr>
+                <tr>
+                  <td class="playerDetail">
+                    <span class="statsName" id="playerTwoName">-</span>
+                    <span class="statsMeta" id="playerTwoMeta">-</span>
+                  </td>
+                  <td class="statNumber" id="playerTwoGoals">-</td>
+                  <td class="statNumber" id="playerTwoAssists">-</td>
+                  <td class="statNumber" id="playerTwoMinutes">-</td>
+                </tr>
+                <tr>
+                  <td class="playerDetail">
+                    <span class="statsName" id="playerThreeName">-</span>
+                    <span class="statsMeta" id="playerThreeMeta">-</span>
+                  </td>
+                  <td class="statNumber" id="playerThreeGoals">-</td>
+                  <td class="statNumber" id="playerThreeAssists">-</td>
+                  <td class="statNumber" id="playerThreeMinutes">-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="topTeamsSection">
+        <h2>Top 3 Equipos</h2>
+
+        <div class="teamsSectionContainer">
+          <table class="teamsMainTable">
+            <thead>
+              <tr>
+                <th class="colTeamHeader"></th>
+                <th>Goles</th>
+                <th>Asistencias</th>
+                <th>Remate</th>
+                <th>Remate y gol</th>
+                <th>Tiros fuera</th>
+                <th>Efectividad de remates (%)</th>
+                <th>Tiros desde el área</th>
+                <th>Tiros fuera del área</th>
+                <th>Remates de cabeza</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="teamRowDetail">
+                  <span class="teamRank">1</span>
+                  <img src="" id="teamOneFlag" alt="" class="teamRowFlag" />
+                  <span class="teamRowName" id="teamOneName">-</span>
+                </td>
+                <td class="teamStatCell" id="teamOneGoals">-</td>
+                <td class="teamStatCell" id="teamOneAssists">-</td>
+                <td class="teamStatCell" id="teamOneShots">-</td>
+                <td class="teamStatCell" id="teamOneShotsOnGoal">-</td>
+                <td class="teamStatCell" id="teamOneShotsOff">-</td>
+                <td class="teamStatCell" id="teamOneAccuracy">-</td>
+                <td class="teamStatCell" id="teamOneAreaShots">-</td>
+                <td class="teamStatCell" id="teamOneOutsideShots">-</td>
+                <td class="teamStatCell" id="teamOneHeaders">-</td>
+              </tr>
+              <tr>
+                <td class="teamRowDetail">
+                  <span class="teamRank">2</span>
+                  <img src="" id="teamTwoFlag" alt="" class="teamRowFlag" />
+                  <span class="teamRowName" id="teamTwoName">-</span>
+                </td>
+                <td class="teamStatCell" id="teamTwoGoals">-</td>
+                <td class="teamStatCell" id="teamTwoAssists">-</td>
+                <td class="teamStatCell" id="teamTwoShots">-</td>
+                <td class="teamStatCell" id="teamTwoShotsOnGoal">-</td>
+                <td class="teamStatCell" id="teamTwoShotsOff">-</td>
+                <td class="teamStatCell" id="teamTwoAccuracy">-</td>
+                <td class="teamStatCell" id="teamTwoAreaShots">-</td>
+                <td class="teamStatCell" id="teamTwoOutsideShots">-</td>
+                <td class="teamStatCell" id="teamTwoHeaders">-</td>
+              </tr>
+              <tr>
+                <td class="teamRowDetail">
+                  <span class="teamRank">3</span>
+                  <img src="" id="teamThreeFlag" alt="" class="teamRowFlag" />
+                  <span class="teamRowName" id="teamThreeName">-</span>
+                </td>
+                <td class="teamStatCell" id="teamThreeGoals">-</td>
+                <td class="teamStatCell" id="teamThreeAssists">-</td>
+                <td class="teamStatCell" id="teamThreeShots">-</td>
+                <td class="teamStatCell" id="teamThreeShotsOnGoal">-</td>
+                <td class="teamStatCell" id="teamThreeShotsOff">-</td>
+                <td class="teamStatCell" id="teamThreeAccuracy">-</td>
+                <td class="teamStatCell" id="teamThreeAreaShots">-</td>
+                <td class="teamStatCell" id="teamThreeOutsideShots">-</td>
+                <td class="teamStatCell" id="teamThreeHeaders">-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+    <script src="index.js"></script>
+    <footer>
+
+    </footer>
+  </body>
+</html>
