@@ -11,6 +11,8 @@
   flex-direction: row;
   padding: 5px;
   border-radius: 5px;
+  gap: 5px;
+  width: 45%;
 }
 .team-flag {
   width: 28px;
@@ -18,12 +20,28 @@
   object-fit: cover;
   margin-right: 5px;
 }
+
+.round-labels {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  margin-bottom: 10px;
+}
+.round-labels h4,
+.round-labels h3 {
+  margin: 0;
+}
+.final-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 main {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   grid-template-rows: repeat(8, 1fr);
   grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-row-gap: 30px;
   height: 90vh;
 }
 
@@ -62,9 +80,8 @@ main {
 /* semifinalSideA */
 [data-fifa-number="p101"] { grid-area: 1 / 4 / 9 / 5; }
 
-/* final y tercer puesto */
-[data-fifa-number="p104"] { grid-area: 1 / 5 / 5 / 6; }
-[data-fifa-number="p103"] { grid-area: 5 / 5 / 9 / 6; }
+#final { grid-area: 1 / 5 / 5 / 6; }
+#thirdAndFourPlace { grid-area: 5 / 5 / 9 / 6; }
 
 /* semifinalSideB */
 [data-fifa-number="p102"] { grid-area: 1 / 6 / 9 / 7; }
