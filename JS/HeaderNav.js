@@ -25,7 +25,7 @@ class HeaderNav extends HTMLElement {
                 </div>
 
                 <div class="NavItem">
-                    <a class="NavLink" href="../HTML/eliminationTree.html">Eliminatorias</a>
+                    <a class="NavLink " href="../HTML/eliminationTree.html">Eliminatorias</a>
                 </div>
 
                 <div class="NavItem">
