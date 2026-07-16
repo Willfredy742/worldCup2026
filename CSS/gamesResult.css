@@ -4,6 +4,9 @@ body {
   /*padding: 20px;*/
 }
 
+main{
+  margin-top: 80px;
+}
 
 #lista-jornadas {
   max-width: 900px;

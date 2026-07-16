@@ -17,7 +17,7 @@ class HeaderNav extends HTMLElement {
                 </div>
 
                 <div class="NavItem">
-                    <a class="NavLink" href="RUTA_HACIA_gamesResult.html">Resultados</a>
+                    <a class="NavLink" href="../HTML/gamesResult.html">Resultados</a>
                 </div>
 
                 <div class="NavItem">
