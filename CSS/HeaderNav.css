@@ -1,0 +1,56 @@
+.MainHeader {
+    height: 280px;
+    display: flex;
+    justify-content: center;
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url("../Img/OrganitatorsCountry.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    margin: 0px 0px -60px 0px;
+}
+
+    .TitleAndLogo {
+        margin-top: -60px;
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+    
+    .HeaderLogo {
+        width: auto;
+        height: 100px;
+    }
+    
+    .HeaderTitle {
+        color: #ffd700;
+    
+        font-family: "Inter", sans-serif;
+        font-size: 50px;
+    
+        text-shadow:
+            -1px -1px 0 black,
+            1px -1px 0 black,
+            -1px 1px 0 black,
+            1px 1px 0 black;
+    }
+
+.MainNav {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+    .NavItem {
+        background-color: #e61d25;
+        padding: 10px 25px;
+        border-radius: 12px;
+    }
+
+    .NavLink {
+        text-decoration: none;
+        color: white;
+    }

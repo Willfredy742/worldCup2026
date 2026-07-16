@@ -4,20 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Copa del Mundo 2026</title>
-    <link rel="stylesheet" href="../CSS/index.css" />
+    <link rel="stylesheet" href="CSS/index.css" />
   </head>
   <body>
-    <header class="startHeader">
-      <h1>Bienvenidos a la Copa del Mundo 2026</h1>
-      <p>
-        Explora la emoción del torneo de fútbol más grande del planeta. Sigue de
-        cerca a tus selecciones favoritas, mantente al tanto de los resultados
-        en tiempo real y analiza las clasificaciones de cada grupo. Toda la
-        información de la cita mundialista en Norteamérica, directo desde
-        nuestra plataforma interactiva.
-      </p>
+    <header>
+      <div class="TitleAndLogo">
+        <img class="HeaderLogo" src="Img/RL_U59_FIFAWorldCupLTE_Logo.webp" alt="Logo oficial de la Copa del Mundo 2026"/>
+        <h1 class="HeaderTitle">FIFA WORLD CUP 2026</h1>
+      </div>
     </header>
+
+    <nav>
+      <div class="NavItem">
+          <a class="NavLink" href="../index.html">Inicio</a>
+      </div>
+      <div class="NavItem">
+          <a class="NavLink" href="RUTA_HACIA_gamesResult.html">Resultados</a>
+      </div>
+      <div class="NavItem">
+          <a class="NavLink" href="../HTML/Groups.html">Grupos</a>
+      </div>
+      <div class="NavItem">
+          <a class="NavLink" href="../HTML/eliminationTree.html">Eliminatorias</a>
+      </div>
+      <div class="NavItem">
+          <a class="NavLink" href="RUTA_HACIA_LA_PAGINA_DE_ESTADISTICAS">Estadisticas</a>
+      </div>
+    </nav>
+
     <main>
+      <div class="startHeader">
+        <h1>Bienvenidos a la Copa del Mundo 2026</h1>
+        <p>
+          Explora la emoción del torneo de fútbol más grande del planeta. Sigue de
+          cerca a tus selecciones favoritas, mantente al tanto de los resultados
+          en tiempo real y analiza las clasificaciones de cada grupo. Toda la
+          información de la cita mundialista en Norteamérica, directo desde
+          nuestra plataforma interactiva.
+        </p>
+      </div> 
       <section class="matchesPanel">
         <div class="matchesGrid">
           <div class="pastMatches past">
@@ -190,9 +215,10 @@
         </div>
       </section>
     </main>
-    <script src="index.js"></script>
     <footer>
 
     </footer>
+
+    <script src="index.js"></script>
   </body>
 </html>
