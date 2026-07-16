@@ -9,6 +9,50 @@ main{
     padding: 20px;
 }
 
+header{
+    height: 250px;
+    display: flex;
+    justify-content: center;
+
+
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../Img/OrganitatorsCountry.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    margin-bottom: -60px;
+}
+
+body{
+    margin: 0px;
+}
+
+div.TittleAndLogo{
+    
+    margin-top: -60px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    
+}
+    img.loogoWorldCupOfHeader{
+        width: auto;
+        height: 100px;
+    }
+
+    h1.TittleOfHeader{
+        color: #FFD700;
+
+        font-family: "Inter", sans-serif;
+        font-size: 50PX;
+
+        text-shadow:
+        -1px -1px 0 black,
+        1px -1px 0 black,
+        -1px  1px 0 black,
+        1px  1px 0 black;
+    }
+
 nav{
     display: flex;
     justify-content: space-between;
