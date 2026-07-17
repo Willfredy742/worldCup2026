@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -8,11 +8,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <title>World Cup 2026</title>
+    <link rel="stylesheet" href="../CSS/HeaderNav.css">
     <link rel="stylesheet" href="../CSS/Groups.css">
     <link rel="stylesheet" href="../CSS/footer.css">
-    <link rel="stylesheet" href="../JS/Groups.js">
     <link rel="stylesheet" href="../JS/HeaderNav.js">
-    <link rel="stylesheet" href="../CSS/HeaderNav.css">
+    <link rel="stylesheet" href="../JS/Groups.js">
     
 </head>
 
@@ -29,85 +29,29 @@
 
         <hr class="Empty50px">
 
-        <div class="AllTables">
+        <div class="AllTables" id="AllTables"></div>
 
+        <template id="GroupTableTemplate">
             <div class="BodyTable">
                 <table class="TableGroup">
-                    <section id="TittleGroupSection"></section>
+                    <caption class="TitleGroup"></caption>
 
                     <thead>
                         <tr>
-                            <th scope="TittleColumn">Pos</th>
-                            <th scope="TittleColumn">País</th>
-                            <th scope="TittleColumn">Vic</th>
-                            <th scope="TittleColumn">Emp</th>
-                            <th scope="TittleColumn">Der</th>
-                            <th scope="TittleColumn">Gol</th>
-                            <th scope="TittleColumn">Pts</th>
+                            <th scope="col" class="TitleColumn">Pos</th>
+                            <th scope="col" class="TitleColumn">País</th>
+                            <th scope="col" class="TitleColumn">Vic</th>
+                            <th scope="col" class="TitleColumn">Emp</th>
+                            <th scope="col" class="TitleColumn">Der</th>
+                            <th scope="col" class="TitleColumn">Gol</th>
+                            <th scope="col" class="TitleColumn">Pts</th>
                         </tr>
                     </thead>
 
-                    <tbody class="BodyTableInfo" id="BodyTableInfo">
-                        <tr>
-                            <td class="Pos">N/A</td>
-                            <td class="Country">
-                                <div class="CountryData">
-                                    <img class="FlagCountry" src="" alt="">
-                                    <span class="NameCountry">N/A</span>
-                                </div>
-                            </td>
-                            <td class="Victory">N/A</td>
-                            <td class="Tie">N/A</td>
-                            <td class="Defeats">N/A</td>
-                            <td class="Goals">N/A</td>
-                            <td class="Points">N/A</td>
-                        </tr>
-                        <tr>
-                            <td class="Pos">N/A</td>
-                            <td class="Country">
-                                <div class="CountryData">
-                                    <img class="FlagCountry" src="" alt="">
-                                    <span class="NameCountry">N/A</span>
-                                </div>
-                            </td>
-                            <td class="Victory">N/A</td>
-                            <td class="Tie">N/A</td>
-                            <td class="Defeats">N/A</td>
-                            <td class="Goals">N/A</td>
-                            <td class="Points">N/A</td>
-                        </tr>
-                        <tr>
-                            <td class="Pos">N/A</td>
-                            <td class="Country">
-                                <div class="CountryData">
-                                    <img class="FlagCountry" src="" alt="">
-                                    <span class="NameCountry">N/A</span>
-                                </div>
-                            </td>
-                            <td class="Victory">N/A</td>
-                            <td class="Tie">N/A</td>
-                            <td class="Defeats">N/A</td>
-                            <td class="Goals">N/A</td>
-                            <td class="Points">N/A</td>
-                        </tr>
-                        <tr>
-                            <td class="Pos">N/A</td>
-                            <td class="Country">
-                                <div class="CountryData">
-                                    <img class="FlagCountry" src="" alt="">
-                                    <span class="NameCountry">N/A</span>
-                                </div>
-                            </td>
-                            <td class="Victory">N/A</td>
-                            <td class="Tie">N/A</td>
-                            <td class="Defeats">N/A</td>
-                            <td class="Goals">N/A</td>
-                            <td class="Points">N/A</td>
-                        </tr>
-                    </tbody>
+                    <tbody class="BodyTableInfo"></tbody>
                 </table>
             </div>
-        </div>
+        </template>
     </main>
 
 
@@ -142,6 +86,7 @@
     </footer>
 
     <script src="../JS/HeaderNav.js"></script>
+    <script src="../JS/Groups.js"></script>
 </body>
 
 </html>
