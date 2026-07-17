@@ -2,15 +2,6 @@ const API_TOKEN = '5c9284725d654005a499edd1905c2553';
 const API_URL = 'https://api.football-data.org/v4/competitions/WC/matches';
 const requestURL = 'https://fifa-wolrldcups.oscarperezdigitech.workers.dev/?url=' + encodeURIComponent(API_URL);
 
-/*function createdWorldCupsCards({ area: { id, name, code } }) {
-    return `    
-       <div>
-         <h3>${name}</h3>
-         <p>${code}</p>
-         <p>${id}</p>
-       </div>
-    `;
-}*/
 
 async function fetchworldCupsJson() {
   try {
@@ -136,8 +127,7 @@ function crearPartidoHTML(match) {
           <span class="nombre-equipo">${home.name}</span>
           <img class="escudo" src="${home.crest}" alt="${home.name}">
         </div>
-
-         <div> 
+        <div> 
             <span class= "estado">${estadoTexto}</span>
             <div class="marcador">${estadoTexto ? `<span class="estado"></span>` : ''}
                  ${resultadoHTML} 
