@@ -50,7 +50,7 @@ table.TableGroup{
     }
 
     td,
-    th.TittleColumn{
+    th.TitleColumn{
         padding: 12px;
         text-align: center;
     }
@@ -84,7 +84,12 @@ table.TableGroup{
 
                 img.FlagCountry{
                     width: 40px; 
-                    height: auto;
+                    height: 25px;
+
+                    object-fit: cover;
+
+                    border: 1px solid;
+
 
                     border-radius: 5px;
                 }
