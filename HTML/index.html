@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Copa del Mundo 2026</title>
-    <link rel="stylesheet" href="CSS/index.css" />
+    <link rel="stylesheet" href="../CSS/index.css" />
   </head>
   <body>
     <header>
       <div class="TitleAndLogo">
-        <img class="HeaderLogo" src="Img/RL_U59_FIFAWorldCupLTE_Logo.webp" alt="Logo oficial de la Copa del Mundo 2026"/>
+        <img class="HeaderLogo" src="../Img/fifaWorldCup2026Logo.svg" alt="Logo oficial de la Copa del Mundo 2026"/>
         <h1 class="HeaderTitle">FIFA WORLD CUP 2026</h1>
       </div>
     </header>
@@ -83,7 +83,7 @@
         <div class="topPlayersContainer">
           <div class="podiumVisual">
             <div class="podiumWrapper">
-              <img src="img/podium.png" alt="Podio" class="podiumBg" />
+              <img src="../Img/podium.png" alt="Podio" class="podiumBg" />
 
               <div class="playerOnPodium posSecond">
                 <img id="playerTwoPhoto" src="" alt="" class="playerPhoto" />
@@ -143,77 +143,48 @@
       </section>
 
       <section class="topTeamsSection">
-        <h2>Top 3 Equipos</h2>
-
-        <div class="teamsSectionContainer">
-          <table class="teamsMainTable">
-            <thead>
-              <tr>
-                <th class="colTeamHeader"></th>
-                <th>Goles</th>
-                <th>Asistencias</th>
-                <th>Remate</th>
-                <th>Remate y gol</th>
-                <th>Tiros fuera</th>
-                <th>Efectividad de remates (%)</th>
-                <th>Tiros desde el área</th>
-                <th>Tiros fuera del área</th>
-                <th>Remates de cabeza</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="teamRowDetail">
-                  <span class="teamRank">1</span>
-                  <img src="" id="teamOneFlag" alt="" class="teamRowFlag" />
-                  <span class="teamRowName" id="teamOneName">-</span>
-                </td>
-                <td class="teamStatCell" id="teamOneGoals">-</td>
-                <td class="teamStatCell" id="teamOneAssists">-</td>
-                <td class="teamStatCell" id="teamOneShots">-</td>
-                <td class="teamStatCell" id="teamOneShotsOnGoal">-</td>
-                <td class="teamStatCell" id="teamOneShotsOff">-</td>
-                <td class="teamStatCell" id="teamOneAccuracy">-</td>
-                <td class="teamStatCell" id="teamOneAreaShots">-</td>
-                <td class="teamStatCell" id="teamOneOutsideShots">-</td>
-                <td class="teamStatCell" id="teamOneHeaders">-</td>
-              </tr>
-              <tr>
-                <td class="teamRowDetail">
-                  <span class="teamRank">2</span>
-                  <img src="" id="teamTwoFlag" alt="" class="teamRowFlag" />
-                  <span class="teamRowName" id="teamTwoName">-</span>
-                </td>
-                <td class="teamStatCell" id="teamTwoGoals">-</td>
-                <td class="teamStatCell" id="teamTwoAssists">-</td>
-                <td class="teamStatCell" id="teamTwoShots">-</td>
-                <td class="teamStatCell" id="teamTwoShotsOnGoal">-</td>
-                <td class="teamStatCell" id="teamTwoShotsOff">-</td>
-                <td class="teamStatCell" id="teamTwoAccuracy">-</td>
-                <td class="teamStatCell" id="teamTwoAreaShots">-</td>
-                <td class="teamStatCell" id="teamTwoOutsideShots">-</td>
-                <td class="teamStatCell" id="teamTwoHeaders">-</td>
-              </tr>
-              <tr>
-                <td class="teamRowDetail">
-                  <span class="teamRank">3</span>
-                  <img src="" id="teamThreeFlag" alt="" class="teamRowFlag" />
-                  <span class="teamRowName" id="teamThreeName">-</span>
-                </td>
-                <td class="teamStatCell" id="teamThreeGoals">-</td>
-                <td class="teamStatCell" id="teamThreeAssists">-</td>
-                <td class="teamStatCell" id="teamThreeShots">-</td>
-                <td class="teamStatCell" id="teamThreeShotsOnGoal">-</td>
-                <td class="teamStatCell" id="teamThreeShotsOff">-</td>
-                <td class="teamStatCell" id="teamThreeAccuracy">-</td>
-                <td class="teamStatCell" id="teamThreeAreaShots">-</td>
-                <td class="teamStatCell" id="teamThreeOutsideShots">-</td>
-                <td class="teamStatCell" id="teamThreeHeaders">-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+  <h2>Top 3 Equipos</h2>
+  <div class="teamsSectionContainer">
+    <table class="teamsMainTable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Equipo</th>
+          <th>Partidos</th>
+          <th>Puntos</th>
+          <th>+/-</th>
+          <th>Goles</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="team1">
+          <td>1</td>
+          <td id="teamOneName"></td>
+          <td id="teamOnePlayed"></td>
+          <td id="teamOnePoints"></td>
+          <td id="teamOneDiff"></td>
+          <td id="teamOneGoals"></td>
+        </tr>
+        <tr id="team2">
+          <td>2</td>
+          <td id="teamTwoName"></td>
+          <td id="teamTwoPlayed"></td>
+          <td id="teamTwoPoints"></td>
+          <td id="teamTwoDiff"></td>
+          <td id="teamTwoGoals"></td>
+        </tr>
+        <tr id="team3">
+          <td>3</td>
+          <td id="teamThreeName"></td>
+          <td id="teamThreePlayed"></td>
+          <td id="teamThreePoints"></td>
+          <td id="teamThreeDiff"></td>
+          <td id="teamThreeGoals"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
     </main>
     <footer>
 
