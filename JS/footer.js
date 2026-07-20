@@ -1,4 +1,4 @@
-fetch("components/footer.html")
+fetch("JS/footer.html")
   .then(response => response.text())
   .then(html => {
     document.getElementById("footer").innerHTML = html;
