@@ -51,7 +51,8 @@
     }
 
     .NavLink {
-        font-family: inter;
         text-decoration: none;
         color: white;
+
+        font-family: inter;
     }
