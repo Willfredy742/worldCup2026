@@ -780,7 +780,6 @@ nav {
     border-radius: 20px;
     padding: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    /* Aseguramos que no haya scroll oculto */
     overflow: hidden;
 }
 
@@ -808,4 +807,17 @@ nav {
 
 .teamsMainTable tbody tr:nth-child(even) {
     background-color: #f9f9f9;
+}
+
+.teamsMainTable td:nth-child(2) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.teamsMainTable img {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+    margin-right: 10px;
 }
