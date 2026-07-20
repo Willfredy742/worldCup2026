@@ -1,6 +1,6 @@
 body{
     background-color: #d1d4d1;
-    min-width: 800px;
+    min-width: 1000px;
     margin: 0px;
 
     font-family: inter;
@@ -11,19 +11,22 @@ hr.Empty50px{
     height: 50px;
 }
 
-h1.NameSection{
+h1.NameSection,
+h2.NameSection{
     margin-left: 50px;
 }
 
 div.BodyTable{
     background-color: white;
     border-radius: 12px;
+    min-width: 1000px;
 
     margin: 0px 50px 0px 50px;
     padding: 20px;
 }
 
-table.TableScorers{
+table.TableScorers,
+table.TableTeams{
     width: 100%;
 
     border-collapse: collapse;
@@ -35,11 +38,13 @@ table.TableScorers{
         text-align: center;
     }
 
-    td.Player{
+    td.Player,
+    td.Team{
         text-align: left;
     }
 
-        div.PlayerData{
+        div.PlayerData,
+        div.TeamData{
             display: flex;
 
             align-items: center;
