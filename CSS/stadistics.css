@@ -1,0 +1,54 @@
+body{
+    background-color: #d1d4d1;
+    min-width: 800px;
+    margin: 0px;
+
+    font-family: inter;
+}
+
+hr.Empty50px{
+    border: none;
+    height: 50px;
+}
+
+h1.NameSection{
+    margin-left: 50px;
+}
+
+div.BodyTable{
+    background-color: white;
+    border-radius: 12px;
+
+    margin: 0px 50px 0px 50px;
+    padding: 20px;
+}
+
+table.TableScorers{
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+    th.TitleColumn,
+    td{
+        padding: 12px;
+        text-align: center;
+    }
+
+    td.Player{
+        text-align: left;
+    }
+
+        div.PlayerData{
+            display: flex;
+
+            align-items: center;
+            gap: 8px;
+        }
+
+            img.TeamCrest{
+                width: 30px;
+                height: auto;
+
+                border-radius: 5px;
+            }
