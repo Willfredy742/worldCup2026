@@ -29,7 +29,7 @@ class HeaderNav extends HTMLElement {
                 </div>
 
                 <div class="NavItem">
-                    <a class="NavLink" href="RUTA_HACIA_LA_PAGINA_DE_ESTADISTICAS">Estadisticas</a>
+                    <a class="NavLink" href="../HTML/stadistics.html">Estadisticas</a>
                 </div>
 
             </nav>
