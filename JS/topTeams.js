@@ -75,8 +75,7 @@ async function loadTopPlayers() {
     })
     .slice(0, 3);
 
-  // Orden visual del podio en el HTML: 
-  // posSecond (2º puesto -> izquierda), posFirst (1º puesto -> centro), posThird (3º puesto -> derecha)
+  
   const podiumOrder = [
     { scorer: topThree[1], ids: { photo: 'playerTwoPhoto', name: 'playerTwoName', meta: 'playerTwoMeta', goals: 'playerTwoGoals', assists: 'playerTwoAssists', minutes: 'playerTwoMinutes' } },
     { scorer: topThree[0], ids: { photo: 'playerOnePhoto', name: 'playerOneName', meta: 'playerOneMeta', goals: 'playerOneGoals', assists: 'playerOneAssists', minutes: 'playerOneMinutes' } },
@@ -104,7 +103,7 @@ async function loadTopPlayers() {
     }
     if (nameEl) nameEl.textContent = player.name || '-';
     
-    // Formato exacto del diseño: minibandera o código de país + posición (ej: FRA FW)
+    
     if (metaEl) {
       const countryCode = team.tla || '';
       metaEl.textContent = `${countryCode} FW`.trim();
@@ -136,7 +135,7 @@ async function loadTopPlayers() {
     })
     .slice(0, 3);
 
-  // Orden visual del podio: 2º puesto (izquierda), 1º puesto (centro), 3º puesto (derecha)
+  
   const podiumOrder = [
     { scorer: topThree[1], photoId: 'playerTwoPhoto', nameId: 'playerTwoName', metaId: 'playerTwoMeta', goalsId: 'playerTwoGoals', assistsId: 'playerTwoAssists', minutesId: 'playerTwoMinutes' },
     { scorer: topThree[0], photoId: 'playerOnePhoto', nameId: 'playerOneName', metaId: 'playerOneMeta', goalsId: 'playerOneGoals', assistsId: 'playerOneAssists', minutesId: 'playerOneMinutes' },
@@ -157,7 +156,7 @@ async function loadTopPlayers() {
     const assistsEl = document.getElementById(item.assistsId);
     const minutesEl = document.getElementById(item.minutesId);
 
-    // --- Bandera en el podio ---
+    
     if (photoEl) {
       photoEl.src = team.crest || '';
       photoEl.alt = `Bandera de ${team.name || 'Selección'}`;
@@ -167,7 +166,7 @@ async function loadTopPlayers() {
       photoEl.style.margin = '0 auto';
     }
 
-    // --- Datos de la tabla ---
+    
     if (nameEl) nameEl.textContent = player.name || '-';
     if (metaEl) {
       const countryCode = team.tla || '';
@@ -177,11 +176,10 @@ async function loadTopPlayers() {
     if (goalsEl) goalsEl.textContent = scorer.goals ?? '-';
     if (assistsEl) assistsEl.textContent = scorer.assists ?? '-';
     
-    // Si la API devuelve 8 por defecto en playedMatches para los finalistas, 
-    // forzamos el límite real de partidos del Mundial (7) o mostramos un guion si prefieres.
+    
     if (minutesEl) {
       let matches = scorer.playedMatches;
-      if (matches > 7) matches = 7; // Tope máximo real de un mundial
+      if (matches > 7) matches = 7; // 
       minutesEl.textContent = matches ?? '-';
     }
   });
@@ -194,58 +192,116 @@ async function loadTopPlayers() {
 
 
 
+function traducirPais(nombreIngles) {
+    const traducciones = {
+        "Spain": "España",
+        "England": "Inglaterra",
+        "Germany": "Alemania",
+        "France": "Francia",
+        "Italy": "Italia",
+        "Brazil": "Brasil",
+        "Argentina": "Argentina",
+        "Portugal": "Portugal",
+        "Netherlands": "Países Bajos",
+        "Belgium": "Bélgica"
+    };
+    return traducciones[nombreIngles] || nombreIngles;
+}
 
 
-const API_KEY = "ebb28bf189024b8c868b342822126f77";
 
-async function fetchTopTeams() {
-  const competitions = ["WC", "PL", "PD", "BL1", "SA"];
 
-  for (const compId of competitions) {
+
+
+
+
+async function calcularTablaDesdePartidos() {
     try {
-      const response = await fetch(
-        `https://api.football-data.org/v4/competitions/${compId}/standings`,
-        {
-          headers: { "X-Auth-Token": API_KEY }
+        const data = await fetchFootballData(`/competitions/${WC_CODE}/matches?season=2026`);
+        
+        if (!data || !data.matches) {
+            console.warn("No se pudieron obtener los partidos para la tabla.");
+            return;
         }
-      );
 
-      if (!response.ok) continue;
+        const matches = data.matches;
+        const tabla = {};
 
-      const data = await response.json();
-      const standings = data.standings.find(s => s.type === "TOTAL");
-      
-      if (!standings) continue;
+        matches.forEach(match => {
+            if (match.status === 'FINISHED') {
+                const local = match.homeTeam.name;
+                const visitante = match.awayTeam.name;
+                const escudoLocal = match.homeTeam.crest;
+                const escudoVisitante = match.awayTeam.crest;
+                const golesLocal = match.score.fullTime.home;
+                const golesVisitante = match.score.fullTime.away;
 
-      // Ordenar por goles a favor (más goleadores) y tomar los 3 primeros
-      const top3 = standings.table
-        .sort((a, b) => b.goalsFor - a.goalsFor)
-        .slice(0, 3);
+                if (!tabla[local]) {
+                    tabla[local] = { nombre: local, crest: escudoLocal, puntos: 0, jugados: 0, gf: 0, gc: 0, dif: 0 };
+                }
+                if (!tabla[visitante]) {
+                    tabla[visitante] = { nombre: visitante, crest: escudoVisitante, puntos: 0, jugados: 0, gf: 0, gc: 0, dif: 0 };
+                }
 
-      updateTeam(0, top3[0]);
-      updateTeam(1, top3[1]);
-      updateTeam(2, top3[2]);
+                tabla[local].jugados++;
+                tabla[visitante].jugados++;
+                tabla[local].gf += golesLocal;
+                tabla[local].gc += golesVisitante;
+                tabla[visitante].gf += golesVisitante;
+                tabla[visitante].gc += golesLocal;
 
-      console.log(`✅ Datos cargados desde: ${compId}`);
-      return;
+                if (golesLocal > golesVisitante) {
+                    tabla[local].puntos += 3;
+                } else if (golesLocal < golesVisitante) {
+                    tabla[visitante].puntos += 3;
+                } else {
+                    tabla[local].puntos += 1;
+                    tabla[visitante].puntos += 1;
+                }
+            }
+        });
+
+        Object.values(tabla).forEach(equipo => {
+            equipo.dif = equipo.gf - equipo.gc;
+        });
+
+        const tablaOrdenada = Object.values(tabla).sort((a, b) => {
+            if (b.puntos !== a.puntos) return b.puntos - a.puntos;
+            if (b.dif !== a.dif) return b.dif - a.dif;
+            return b.gf - a.gf;
+        });
+
+        // ==========================================
+        // PINTAR EL TOP 3 CON TUS IDs REALES DEL HTML
+        // ==========================================
+        const top3 = tablaOrdenada.slice(0, 3);
+        const idSuffixes = ['One', 'Two', 'Three'];
+
+        top3.forEach((equipo, index) => {
+            const suffix = idSuffixes[index];
+            
+            const nameEl = document.getElementById(`team${suffix}Name`);
+            const logoEl = document.getElementById(`team${suffix}Logo`);
+            const playedEl = document.getElementById(`team${suffix}Played`);
+            const goalsEl = document.getElementById(`team${suffix}Goals`);
+
+            if (nameEl) nameEl.textContent = traducirPais(equipo.nombre);
+            if (logoEl) {
+                logoEl.src = equipo.crest || '';
+                logoEl.alt = `Logo de ${equipo.nombre}`;
+                logoEl.style.display = 'inline-block';
+                logoEl.style.width = '30px';
+                logoEl.style.height = 'auto';
+            }
+            if (playedEl) playedEl.textContent = equipo.jugados;
+            if (goalsEl) goalsEl.textContent = equipo.gf;
+        });
+
+        return tablaOrdenada;
 
     } catch (error) {
-      console.error(`Error con ${compId}:`, error);
+        console.error("Error al calcular la tabla:", error);
     }
-  }
 }
 
-function updateTeam(index, teamData) {
-  const positions = ["One", "Two", "Three"];
-  const pos = positions[index];
-
-  document.getElementById(`team${pos}Logo`).src = teamData.team.crest;
-  document.getElementById(`team${pos}Name`).textContent = teamData.team.shortName || teamData.team.name;
-  document.getElementById(`team${pos}Played`).textContent = teamData.playedGames;
-  document.getElementById(`team${pos}Goals`).textContent = teamData.goalsFor;
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  fetchTopTeams();
-  setInterval(fetchTopTeams, 60000);
-});
+document.addEventListener('DOMContentLoaded', calcularTablaDesdePartidos);
