@@ -1,6 +1,9 @@
 * {
   box-sizing: border-box;
 }
+body {
+  background-color: #EAEAEA;
+}
 .team {
   border: 1px solid black;
   width: fit-content;
@@ -13,6 +16,31 @@
   border-radius: 5px;
   gap: 5px;
   width: 45%;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  background-color: white;
+  transform-origin: center;
+}
+.team:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+.team.scale-champion,
+.team.scale-champion:hover {
+  transform: scale(1.18);
+  z-index: 10;
+}
+.team.scale-runner-up,
+.team.scale-runner-up:hover {
+  transform: scale(1.12);
+  z-index: 10;
+}
+.team.scale-third,
+.team.scale-third:hover {
+  transform: scale(1.09);
+  z-index: 10;
 }
 .team-flag {
   width: 28px;
@@ -105,3 +133,33 @@ main {
 [data-fifa-number="p88"] { grid-area: 6 / 9 / 7 / 10; }
 [data-fifa-number="p85"] { grid-area: 7 / 9 / 8 / 10; }
 [data-fifa-number="p87"] { grid-area: 8 / 9 / 9 / 10; }
+.team.champion {
+  border: 2px solid #ffd700;
+}
+
+.team.runner-up {
+  border: 2px solid #c0c0c0;
+}
+
+.team.third-place {
+  border: 2px solid #cd7f32;
+}
+.team.hl-win {
+  border-color: #2ecc71;
+}
+
+.team.hl-loss {
+  border-color: #e74c3c;
+}
+
+.team.hl-champion {
+  border-color: #ffd700;
+}
+
+.team.hl-runner-up {
+  border-color: #c0c0c0;
+}
+
+.team.hl-third {
+  border-color: #cd7f32;
+}
