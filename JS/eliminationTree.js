@@ -24,8 +24,6 @@ async function loadEliminationTree() {
     knockoutMatches.forEach(fillMatch);
     applyMedalBorders();
 
-    // Las medallas cambian el grosor del borde (1px -> 2px): redibujamos
-    // para que las líneas queden perfectamente ancladas.
     if (window.bracketLines) {
       window.bracketLines.redraw();
     }

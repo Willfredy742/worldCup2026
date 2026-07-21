@@ -43,7 +43,6 @@
     ["p102", "thirdAndFourPlace", "B"],
   ];
 
-  // Mapa inverso: partido -> partidos de los que procede (para pathHighlight.js)
   const SOURCES = {};
   CONNECTIONS.forEach(function (conn) {
     if (!SOURCES[conn[1]]) SOURCES[conn[1]] = [];
@@ -72,8 +71,6 @@
     return cachedEls[id] || null;
   }
 
-  // Devuelve el rect de un elemento IGNORANDO cualquier transform (scale del hover).
-  // En reposo (transform: none) devuelve el rect normal, idéntico a getBoundingClientRect.
   function getUntransformedRect(n) {
     const r = n.getBoundingClientRect();
     const transform = window.getComputedStyle(n).transform;
@@ -119,7 +116,7 @@
       right = -Infinity;
       bottom = -Infinity;
       nodes.forEach(function (n) {
-        const r = getUntransformedRect(n); // <- mide sin el scale del hover
+        const r = getUntransformedRect(n);
         if (r.left < left) left = r.left;
         if (r.top < top) top = r.top;
         if (r.right > right) right = r.right;
@@ -275,8 +272,6 @@
 
     let timeout = null;
     const observer = new MutationObserver(function (mutations) {
-      // Los cambios de clase en .team (hover, scale-*, hl-*, medallas) NO tocan
-      // el layout: los ignoramos para no redibujar con el equipo a medio agrandar.
       const relevant = mutations.some(function (m) {
         if (m.type !== "attributes" || m.attributeName !== "class") return true;
         return !(m.target.classList && m.target.classList.contains("team"));
