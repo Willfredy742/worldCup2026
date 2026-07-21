@@ -2,6 +2,10 @@ const API_TOKEN = '24d5f01cf74e46e0979c766b3c05149e';
 const API_URL = 'https://api.football-data.org/v4/competitions/WC/matches';
 const requestURL = 'https://fifaworldcup2026.gonzalezgomezjesus16061997.workers.dev/?url=' + encodeURIComponent(API_URL);
 
+// Estado compartido: pathHighlight.js lee de aquí los resultados.
+// Clave = identificador usado en el HTML (data-fifa-number o id).
+window.bracketData = window.bracketData || { byElementId: {} };
+
 async function loadEliminationTree() {
   try {
     const response = await fetch(requestURL, {
@@ -18,6 +22,15 @@ async function loadEliminationTree() {
     const knockoutMatches = data.matches.filter(match => match.stage !== 'GROUP_STAGE');
 
     knockoutMatches.forEach(fillMatch);
+    applyMedalBorders();
+
+    // Las medallas cambian el grosor del borde (1px -> 2px): redibujamos
+    // para que las líneas queden perfectamente ancladas.
+    if (window.bracketLines) {
+      window.bracketLines.redraw();
+    }
+
+    document.dispatchEvent(new CustomEvent('bracket:data-loaded'));
   } catch (error) {
     console.error('No se pudieron cargar los datos de la API:', error);
   }
@@ -26,6 +39,9 @@ async function loadEliminationTree() {
 function fillMatch(match) {
   const matchEl = document.getElementById(match.id);
   if (!matchEl) return;
+
+  const elKey = matchEl.dataset.fifaNumber || matchEl.id;
+  window.bracketData.byElementId[elKey] = match;
 
   const homeEl = matchEl.querySelector('[data-slot="home"]');
   const awayEl = matchEl.querySelector('[data-slot="away"]');
@@ -57,6 +73,38 @@ function fillTeam(teamEl, team) {
   }
 
   tlaEl.textContent = team.tla ?? 'Por determinar';
+}
+
+function applyMedalBorders() {
+  const byId = window.bracketData.byElementId;
+  const all = Object.values(byId);
+
+  const finalMatch = byId["final"] || all.find(isFinalStage);
+  const thirdMatch = byId["thirdAndFourPlace"] || all.find(isThirdStage);
+
+  if (finalMatch && finalMatch.score && finalMatch.score.winner) {
+    const champion =
+      finalMatch.score.winner === "HOME_TEAM"
+        ? finalMatch.homeTeam
+        : finalMatch.awayTeam;
+
+    const runnerUp =
+      finalMatch.score.winner === "HOME_TEAM"
+        ? finalMatch.awayTeam
+        : finalMatch.homeTeam;
+
+    markTeam(champion.tla, "champion");
+    markTeam(runnerUp.tla, "runner-up");
+  }
+
+  if (thirdMatch && thirdMatch.score && thirdMatch.score.winner) {
+    const third =
+      thirdMatch.score.winner === "HOME_TEAM"
+        ? thirdMatch.homeTeam
+        : thirdMatch.awayTeam;
+
+    markTeam(third.tla, "third-place");
+  }
 }
 
 loadEliminationTree();
