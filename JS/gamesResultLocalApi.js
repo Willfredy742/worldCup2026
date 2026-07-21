@@ -1,17 +1,3 @@
-// const API_TOKEN = '5c9284725d654005a499edd1905c2553';
-// const API_URL = 'https://api.football-data.org/v4/competitions/WC/matches';
-// const requestURL = 'https://fifa-wolrldcups.oscarperezdigitech.workers.dev/?url=' + encodeURIComponent(API_URL);
-
-/*function createdWorldCupsCards({ area: { id, name, code } }) {
-    return `    
-       <div>
-         <h3>${name}</h3>
-         <p>${code}</p>
-         <p>${id}</p>
-       </div>
-    `;
-}*/
-
 const requestURL = "../JSON/API.json";
 
 
@@ -48,9 +34,7 @@ const NOMBRES_FASE = {
   FINAL: 'Final'
 };
 
-// Aquí guardamos en memoria TODOS los partidos, una sola vez,
-// después de la primera llamada a la API. Los filtros trabajan
-// solo con esta variable, sin volver a consultar la API.
+
 let todosLosPartidos = [];
 
 const NOMBRES_GRUPO = {
@@ -73,11 +57,17 @@ function agruparPartidosPorFecha(matches){
         return partidosPorFecha;
 }
 
-function obtenerDiasAMostrar(partidosPorFecha) {
-        const hoy = new Date();
-        const hoyStr = hoy.toISOString().slice(0, 10); // Obtener la fecha de hoy en formato YYYY-MM-DD
 
-        const fechasOrdenadas = Object.keys(partidosPorFecha).sort(); // Ordenar las fechas
+function obtenerDiasAMostrar(partidosPorFecha, mostrarTodasLasFechas = false) {
+        const fechasOrdenadas = Object.keys(partidosPorFecha).sort(); 
+
+        
+        if (mostrarTodasLasFechas) {
+          return fechasOrdenadas;
+        }
+
+        const hoy = new Date();
+        const hoyStr = hoy.toISOString().slice(0, 10); 
 
         const diasPasados = fechasOrdenadas.filter(fecha => fecha < hoyStr);
         const diasFuturos = fechasOrdenadas.filter(fecha => fecha > hoyStr);
@@ -178,14 +168,22 @@ function crearBloqueFecha(claveFecha, partidosDelDia) {
   `;
 }
 
+function mostrarMensajeSinPartidos(filtro) {
+  const worldCupsSectionHTML = document.getElementById('worldCupsSectionHTML');
+  const mensaje = MENSAJES_SIN_PARTIDOS[filtro] || 'No hay partidos para mostrar.';
+ 
+  worldCupsSectionHTML.innerHTML = `
+    <p class="sin-partidos">${mensaje}</p>
+  `;
+}
 // Antes recibía "worldCupsData" completo. Ahora recibe directamente
 // un array de partidos (puede ser todos, o ya filtrados por estado).
 // Así la misma función sirve tanto para "Todos" como para cada filtro.
-function renderizarPartidos(matches) {
+function renderizarPartidos(matches, mostrarTodasLasFechas = false) {
   const worldCupsSectionHTML = document.getElementById('worldCupsSectionHTML');
 
   const partidosPorFecha = agruparPartidosPorFecha(matches);
-  const diasAMostrar = obtenerDiasAMostrar(partidosPorFecha);
+  const diasAMostrar = obtenerDiasAMostrar(partidosPorFecha, mostrarTodasLasFechas);
 
   const bloquesHTML = diasAMostrar
     .map(fecha => crearBloqueFecha(fecha, partidosPorFecha[fecha]))
@@ -230,9 +228,12 @@ function marcarBotonActivo(botonSeleccionado) {
   botones.forEach(boton => boton.classList.remove('activo'));
   botonSeleccionado.classList.add('activo');
 }
-
-// Conecta cada botón de filtro con su comportamiento.
-// Se llama una sola vez, cuando arranca la página.
+const MENSAJES_SIN_PARTIDOS = {
+  programados: 'A la fecha no hay juegos programados.',
+  'en-vivo': 'A la fecha no hay juegos en vivo.',
+  finalizados: 'A la fecha no hay juegos finalizados.'
+};
+ 
 function inicializarFiltros() {
   const botones = document.querySelectorAll('.filtro-btn');
 
@@ -243,7 +244,13 @@ function inicializarFiltros() {
       marcarBotonActivo(boton);
 
       const partidosFiltrados = filtrarPartidosPorEstado(todosLosPartidos, filtroElegido);
-      renderizarPartidos(partidosFiltrados);
+
+      if (partidosFiltrados.length === 0) {
+        mostrarMensajeSinPartidos(filtroElegido);
+      } else {
+        const mostrarTodasLasFechas = filtroElegido === `todos`;
+        renderizarPartidos(partidosFiltrados, mostrarTodasLasFechas);
+      }
     });
   });
 }

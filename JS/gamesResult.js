@@ -59,11 +59,16 @@ function agruparPartidosPorFecha(matches){
         return partidosPorFecha;
 }
 
-function obtenerDiasAMostrar(partidosPorFecha) {
+function obtenerDiasAMostrar(partidosPorFecha, mostrarTodasLasFechas = false) {
+        const fechasOrdenadas = Object.keys(partidosPorFecha).sort(); 
+
+        
+        if (mostrarTodasLasFechas) {
+          return fechasOrdenadas;
+        }
+
         const hoy = new Date();
         const hoyStr = hoy.toISOString().slice(0, 10); 
-
-        const fechasOrdenadas = Object.keys(partidosPorFecha).sort(); 
 
         const diasPasados = fechasOrdenadas.filter(fecha => fecha < hoyStr);
         const diasFuturos = fechasOrdenadas.filter(fecha => fecha > hoyStr);
@@ -164,12 +169,20 @@ function crearBloqueFecha(claveFecha, partidosDelDia) {
   `;
 }
 
+function mostrarMensajeSinPartidos(filtro) {
+  const worldCupsSectionHTML = document.getElementById('worldCupsSectionHTML');
+  const mensaje = MENSAJES_SIN_PARTIDOS[filtro] || 'No hay partidos para mostrar.';
+ 
+  worldCupsSectionHTML.innerHTML = `
+    <p class="sin-partidos">${mensaje}</p>
+  `;
+}
 
-function renderizarPartidos(matches) {
+function renderizarPartidos(matches, mostrarTodasLasFechas = false) {
   const worldCupsSectionHTML = document.getElementById('worldCupsSectionHTML');
 
   const partidosPorFecha = agruparPartidosPorFecha(matches);
-  const diasAMostrar = obtenerDiasAMostrar(partidosPorFecha);
+  const diasAMostrar = obtenerDiasAMostrar(partidosPorFecha, mostrarTodasLasFechas);
 
   const bloquesHTML = diasAMostrar
     .map(fecha => crearBloqueFecha(fecha, partidosPorFecha[fecha]))
@@ -213,18 +226,29 @@ function marcarBotonActivo(botonSeleccionado) {
   botonSeleccionado.classList.add('activo');
 }
 
-
+const MENSAJES_SIN_PARTIDOS = {
+  programados: 'A la fecha no hay juegos programados.',
+  'en-vivo': 'A la fecha no hay juegos en vivo.',
+  finalizados: 'A la fecha no hay juegos finalizados.'
+};
+ 
 function inicializarFiltros() {
   const botones = document.querySelectorAll('.filtro-btn');
 
   botones.forEach(boton => {
     boton.addEventListener('click', () => {
-      const filtroElegido = boton.dataset.filtro; 
+      const filtroElegido = boton.dataset.filtro; // lee el atributo data-filtro
 
       marcarBotonActivo(boton);
 
       const partidosFiltrados = filtrarPartidosPorEstado(todosLosPartidos, filtroElegido);
-      renderizarPartidos(partidosFiltrados);
+
+      if (partidosFiltrados.length === 0) {
+        mostrarMensajeSinPartidos(filtroElegido);
+      } else {
+        const mostrarTodasLasFechas = filtroElegido === `todos`;
+        renderizarPartidos(partidosFiltrados, mostrarTodasLasFechas);
+      }
     });
   });
 }
