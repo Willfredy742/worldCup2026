@@ -4,16 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Copa del Mundo 2026</title>
-    <link rel="stylesheet" href="../CSS/index.css" />
+    <link rel="stylesheet" href="CSS/index.css" />
   </head>
   <body>
     <header>
       <div class="TitleAndLogo">
-        <img class="HeaderLogo" src="../Img/fifaWorldCup2026Logo.svg" alt="Logo oficial de la Copa del Mundo 2026"/>
+        <img class="HeaderLogo" src="Img/RL_U59_FIFAWorldCupLTE_Logo.webp" alt="Logo oficial de la Copa del Mundo 2026"/>
         <h1 class="HeaderTitle">FIFA WORLD CUP 2026</h1>
       </div>
     </header>
-
+    
     <nav>
       <div class="NavItem">
           <a class="NavLink" href="../index.html">Inicio</a>
@@ -42,38 +42,15 @@
           información de la cita mundialista en Norteamérica, directo desde
           nuestra plataforma interactiva.
         </p>
-      </div> 
-      <section class="matchesPanel">
-        <div class="matchesGrid">
-          <div class="pastMatches past">
-            <span class="statusPast">Pasado</span>
-            <div class="teamsVersusPast">
-              <img id="pastHomeLogo" src="" alt="Local" />
-              <span class="vsText">VS</span>
-              <img id="pastAwayLogo" src="" alt="Visitante" />
-            </div>
-            <div class="scorePast" id="past-score">-</div>
+      </div>
+    <section class="matchesPanel">
+        <div class="championBanner">
+          <span>¡Campeón del Mundo 2026!</span>
+          <div class="championContent">
+            <img id="championLogo" src="" alt="Escudo de España" />
+            <h2 id="championName"></h2>
           </div>
-
-          <div class="currentMatches current">
-            <span class="statusCurrent">Actual</span>
-            <div class="teamsVersusCurrent">
-              <img id="currentHomeLogo" src="" alt="Local" />
-              <span class="vsText">VS</span>
-              <img id="currentAwayLogo" src="" alt="Visitante" />
-            </div>
-            <div class="scoreCurrent" id="current-score">-</div>
-          </div>
-
-          <div class="futureMatches future">
-            <span class="statusFuture">Próximo</span>
-            <div class="teamsVersusFuture">
-              <img id="futureHomeLogo" src="" alt="Local" />
-              <span class="vsText">VS</span>
-              <img id="futureAwayLogo" src="" alt="Visitante" />
-            </div>
-            <div class="timeFuture" id="future-time">-</div>
-          </div>
+          <div class="championSubtitle">¡Gran victoria en la final!</div>
         </div>
       </section>
 
@@ -83,7 +60,7 @@
         <div class="topPlayersContainer">
           <div class="podiumVisual">
             <div class="podiumWrapper">
-              <img src="../Img/podium.png" alt="Podio" class="podiumBg" />
+              <img src="Img/podium.png" alt="Podio" class="podiumBg" />
 
               <div class="playerOnPodium posSecond">
                 <img id="playerTwoPhoto" src="" alt="" class="playerPhoto" />
@@ -105,7 +82,7 @@
                   <th class="colStatsPlayer"></th>
                   <th>Goles</th>
                   <th>Asistencias</th>
-                  <th>Minutos Jugados</th>
+                  <th>Partidos Jugados</th>
                 </tr>
               </thead>
               <tbody>
@@ -151,8 +128,6 @@
           <th>#</th>
           <th>Equipo</th>
           <th>Partidos</th>
-          <th>Puntos</th>
-          <th>+/-</th>
           <th>Goles</th>
         </tr>
       </thead>
@@ -164,8 +139,6 @@
             <span id="teamOneName"></span>
           </td>
           <td id="teamOnePlayed"></td>
-          <td id="teamOnePoints"></td>
-          <td id="teamOneDiff"></td>
           <td id="teamOneGoals"></td>
         </tr>
         <tr id="team2">
@@ -175,8 +148,6 @@
             <span id="teamTwoName"></span>
           </td>
           <td id="teamTwoPlayed"></td>
-          <td id="teamTwoPoints"></td>
-          <td id="teamTwoDiff"></td>
           <td id="teamTwoGoals"></td>
         </tr>
         <tr id="team3">
@@ -186,8 +157,6 @@
             <span id="teamThreeName"></span>
           </td>
           <td id="teamThreePlayed"></td>
-          <td id="teamThreePoints"></td>
-          <td id="teamThreeDiff"></td>
           <td id="teamThreeGoals"></td>
         </tr>
       </tbody>
@@ -199,6 +168,6 @@
 
     </footer>
 
-    <script src="../JS/index.js"></script>
+    <script src="JS/topTeams.js"></script>
   </body>
 </html>

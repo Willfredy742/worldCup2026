@@ -821,3 +821,50 @@ nav {
     object-fit: contain;
     margin-right: 10px;
 }
+
+.championBanner {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.championBanner span {
+    display: block;
+    font-family: 'Arial Black', sans-serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #e61d25;
+    margin-bottom: 20px;
+}
+
+.championContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+#championLogo {
+    width: 65px;
+    height: auto;
+    object-fit: contain;
+}
+
+#championName {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 2.2rem;
+    color: #000000;
+    margin: 0;
+}
+
+.championSubtitle {
+    font-family: 'Arial', sans-serif;
+    font-size: 0.95rem;
+    color: #7f8c8d;
+    font-weight: bold;
+}
