@@ -2,15 +2,6 @@ const API_TOKEN = '5c9284725d654005a499edd1905c2553';
 const API_URL = 'https://api.football-data.org/v4/competitions/WC/matches';
 const requestURL = 'https://fifa-wolrldcups.oscarperezdigitech.workers.dev/?url=' + encodeURIComponent(API_URL);
 
-/*function createdWorldCupsCards({ area: { id, name, code } }) {
-    return `    
-       <div>
-         <h3>${name}</h3>
-         <p>${code}</p>
-         <p>${id}</p>
-       </div>
-    `;
-}*/
 
 async function fetchworldCupsJson() {
   try {
@@ -25,7 +16,7 @@ async function fetchworldCupsJson() {
     }
 
     const data = await response.json();
-    return data;   // <- esto es lo que faltaba
+    return data;   // 
   } catch (error) {
     console.error('No se pudieron cargar los datos de la API:', error);
     return null;
@@ -45,9 +36,7 @@ const NOMBRES_FASE = {
   FINAL: 'Final'
 };
 
-// Aquí guardamos en memoria TODOS los partidos, una sola vez,
-// después de la primera llamada a la API. Los filtros trabajan
-// solo con esta variable, sin volver a consultar la API.
+
 let todosLosPartidos = [];
 
 const NOMBRES_GRUPO = {
@@ -61,7 +50,7 @@ function agruparPartidosPorFecha(matches){
 
         matches.forEach(match => {
 
-            const claveFecha = match.utcDate.slice(0, 10); // Obtener la fecha en formato YYYY-MM-DD
+            const claveFecha = match.utcDate.slice(0, 10); 
             if (!partidosPorFecha[claveFecha]) {
                 partidosPorFecha[claveFecha] = [];
             }
@@ -72,9 +61,9 @@ function agruparPartidosPorFecha(matches){
 
 function obtenerDiasAMostrar(partidosPorFecha) {
         const hoy = new Date();
-        const hoyStr = hoy.toISOString().slice(0, 10); // Obtener la fecha de hoy en formato YYYY-MM-DD
+        const hoyStr = hoy.toISOString().slice(0, 10); 
 
-        const fechasOrdenadas = Object.keys(partidosPorFecha).sort(); // Ordenar las fechas
+        const fechasOrdenadas = Object.keys(partidosPorFecha).sort(); 
 
         const diasPasados = fechasOrdenadas.filter(fecha => fecha < hoyStr);
         const diasFuturos = fechasOrdenadas.filter(fecha => fecha > hoyStr);
@@ -91,7 +80,7 @@ function obtenerDiasAMostrar(partidosPorFecha) {
 
 
 function formatearFechaLarga(claveFecha) {
-  // claveFecha viene como "2026-07-07"
+
   const [anio, mes, dia] = claveFecha.split('-').map(Number);
   const fecha = new Date(Date.UTC(anio, mes - 1, dia));
 
@@ -125,7 +114,7 @@ function crearPartidoHTML(match) {
     resultadoHTML = `<span class="resultado">${formatearHora(match.utcDate)}</span>`;
     estadoTexto = '';
   } else {
-    // Cualquier otro estado que devuelva la API (ej. postergado, en juego, etc.)
+    
     resultadoHTML = `<span class="resultado">--</span>`;
     estadoTexto = match.status;
   }
@@ -175,9 +164,7 @@ function crearBloqueFecha(claveFecha, partidosDelDia) {
   `;
 }
 
-// Antes recibía "worldCupsData" completo. Ahora recibe directamente
-// un array de partidos (puede ser todos, o ya filtrados por estado).
-// Así la misma función sirve tanto para "Todos" como para cada filtro.
+
 function renderizarPartidos(matches) {
   const worldCupsSectionHTML = document.getElementById('worldCupsSectionHTML');
 
@@ -191,8 +178,7 @@ function renderizarPartidos(matches) {
   worldCupsSectionHTML.innerHTML = bloquesHTML;
 }
 
-// Devuelve solo los partidos que corresponden al filtro elegido.
-// "todos" no filtra nada, devuelve el array completo tal cual.
+
 function filtrarPartidosPorEstado(matches, filtro) {
   if (filtro === 'todos') {
     return matches;
@@ -216,26 +202,24 @@ function filtrarPartidosPorEstado(matches, filtro) {
     return matches.filter(match => match.status === 'FINISHED');
   }
 
-  // Por seguridad, si llega un filtro desconocido, mostramos todos
+  
   return matches;
 }
 
-// Marca visualmente qué botón está activo (le pone la clase "activo"
-// y se la quita a los demás).
+
 function marcarBotonActivo(botonSeleccionado) {
   const botones = document.querySelectorAll('.filtro-btn');
   botones.forEach(boton => boton.classList.remove('activo'));
   botonSeleccionado.classList.add('activo');
 }
 
-// Conecta cada botón de filtro con su comportamiento.
-// Se llama una sola vez, cuando arranca la página.
+
 function inicializarFiltros() {
   const botones = document.querySelectorAll('.filtro-btn');
 
   botones.forEach(boton => {
     boton.addEventListener('click', () => {
-      const filtroElegido = boton.dataset.filtro; // lee el atributo data-filtro
+      const filtroElegido = boton.dataset.filtro; 
 
       marcarBotonActivo(boton);
 
@@ -249,9 +233,9 @@ async function displayFifa() {
   const worldCupsData = await fetchworldCupsJson(); // única llamada a la API
 
   if (worldCupsData && worldCupsData.matches) {
-    todosLosPartidos = worldCupsData.matches; // guardamos en memoria para los filtros
-    renderizarPartidos(todosLosPartidos);     // primer render: muestra "Todos"
-    inicializarFiltros();                     // activa los botones de filtro
+    todosLosPartidos = worldCupsData.matches; 
+    renderizarPartidos(todosLosPartidos);     
+    inicializarFiltros();                     
   } else {
     console.error("No se encontraron datos de la API.");
   }
@@ -260,18 +244,3 @@ async function displayFifa() {
 displayFifa();
 
 
-
-
-/*async function displayFifa() {
-    const worldCupsSectionHTML = document.getElementById("worldCupsSectionHTML");
-    const worldCupsData = await fetchworldCupsJson();
-
-    if (worldCupsData && worldCupsData.matches) {
-        const worldCupsCards = worldCupsData.matches.map(createdWorldCupsCards).join("");
-        worldCupsSectionHTML.innerHTML = worldCupsCards;
-    } else {
-        console.error("No se encontraron datos de la API.");
-    }
-}
-
-displayFifa();*/
