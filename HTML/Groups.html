@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <title>World Cup 2026</title>
+    <link rel="stylesheet" href="../CSS/HeaderNav.css">
+    <link rel="stylesheet" href="../CSS/Groups.css">
+    <link rel="stylesheet" href="../CSS/footer.css">
+    <link rel="stylesheet" href="../JS/HeaderNav.js">
+    <link rel="stylesheet" href="../JS/Groups.js">
+</head>
+
+<body>
+
+    <header-nav></header-nav>
+
+    <main>
+        <hr class="Empty50px">
+        <h1 class="NameSection">CLASIFICACIÓN POR GRUPOS</h1>
+        <hr class="Empty50px">
+
+        <div class="AllTables" id="AllTables"></div>
+
+        <template id="GroupTableTemplate">
+            <div class="BodyTable">
+                <table class="TableGroup">
+                    <caption class="TitleGroup"></caption>
+
+                    <thead>
+                        <tr>
+                            <th scope="col" class="TitleColumn">Pos</th>
+                            <th scope="col" class="TitleColumn">País</th>
+                            <th scope="col" class="TitleColumn">Vic</th>
+                            <th scope="col" class="TitleColumn">Emp</th>
+                            <th scope="col" class="TitleColumn">Der</th>
+                            <th scope="col" class="TitleColumn">Gol</th>
+                            <th scope="col" class="TitleColumn">Pts</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="BodyTableInfo"></tbody>
+                </table>
+            </div>
+        </template>
+    </main>
+
+    <footer id="footer"></footer>
+
+    <script src="../JS/HeaderNav.js"></script>
+    <script src="../JS/Groups.js"></script>
+    <script src="../JS/footer.js"></script>
+</body>
+
+</html>

@@ -1,18 +1,173 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <header></header>
-
-    <nav></nav>
-
-    <main></main>
-
-    <footer></footer>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Copa del Mundo 2026</title>
+    <link rel="stylesheet" href="CSS/index.css" />
+  </head>
+  <body>
+    <header>
+      <div class="TitleAndLogo">
+        <img class="HeaderLogo" src="Img/RL_U59_FIFAWorldCupLTE_Logo.webp" alt="Logo oficial de la Copa del Mundo 2026"/>
+        <h1 class="HeaderTitle">FIFA WORLD CUP 2026</h1>
+      </div>
+    </header>
     
-</body>
+    <nav>
+      <div class="NavItem">
+          <a class="NavLink" href="../index.html">Inicio</a>
+      </div>
+      <div class="NavItem">
+          <a class="NavLink" href="../HTML/gamesResult.html">Resultados</a>
+      </div>
+      <div class="NavItem">
+          <a class="NavLink" href="../HTML/Groups.html">Grupos</a>
+      </div>
+      <div class="NavItem">
+          <a class="NavLink" href="../HTML/eliminationTree.html">Eliminatorias</a>
+      </div>
+      <div class="NavItem">
+          <a class="NavLink" href="../HTML/stadistics.html">Estadisticas</a>
+      </div>
+    </nav>
+
+    <main>
+      <div class="startHeader">
+        <h1>Bienvenidos a la Copa del Mundo 2026</h1>
+        <p>
+          Explora la emoción del torneo de fútbol más grande del planeta. Sigue de
+          cerca a tus selecciones favoritas, mantente al tanto de los resultados
+          en tiempo real y analiza las clasificaciones de cada grupo. Toda la
+          información de la cita mundialista en Norteamérica, directo desde
+          nuestra plataforma interactiva.
+        </p>
+      </div>
+    <section class="matchesPanel">
+        <div class="championBanner">
+          <span>¡Campeón del Mundo 2026!</span>
+          <div class="championContent">
+            <img id="championLogo" src="" alt="Escudo de España" />
+            <h2 id="championName"></h2>
+          </div>
+          <div class="championSubtitle">¡Gran victoria en la final!</div>
+        </div>
+      </section>
+
+      <section class="topPlayersSection">
+        <h2>Top 3 Jugadores</h2>
+
+        <div class="topPlayersContainer">
+          <div class="podiumVisual">
+            <div class="podiumWrapper">
+              <img src="Img/podium.png" alt="Podio" class="podiumBg" />
+
+              <div class="playerOnPodium posSecond">
+                <img id="playerTwoPhoto" src="" alt="" class="playerPhoto" />
+              </div>
+
+              <div class="playerOnPodium posFirst">
+                <img id="playerOnePhoto" src="" alt="" class="playerPhoto" />
+              </div>
+
+              <div class="playerOnPodium posThird">
+                <img id="playerThreePhoto" src="" alt="" class="playerPhoto" />
+              </div>
+            </div>
+          </div>
+          <div class="statsTableContainer">
+            <table class="statsTable">
+              <thead>
+                <tr>
+                  <th class="colStatsPlayer"></th>
+                  <th>Goles</th>
+                  <th>Asistencias</th>
+                  <th>Partidos Jugados</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="playerDetail">
+                    <span class="statsName" id="playerOneName">-</span>
+                    <span class="statsMeta" id="playerOneMeta">-</span>
+                  </td>
+                  <td class="statNumber" id="playerOneGoals">-</td>
+                  <td class="statNumber" id="playerOneAssists">-</td>
+                  <td class="statNumber" id="playerOneMinutes">-</td>
+                </tr>
+                <tr>
+                  <td class="playerDetail">
+                    <span class="statsName" id="playerTwoName">-</span>
+                    <span class="statsMeta" id="playerTwoMeta">-</span>
+                  </td>
+                  <td class="statNumber" id="playerTwoGoals">-</td>
+                  <td class="statNumber" id="playerTwoAssists">-</td>
+                  <td class="statNumber" id="playerTwoMinutes">-</td>
+                </tr>
+                <tr>
+                  <td class="playerDetail">
+                    <span class="statsName" id="playerThreeName">-</span>
+                    <span class="statsMeta" id="playerThreeMeta">-</span>
+                  </td>
+                  <td class="statNumber" id="playerThreeGoals">-</td>
+                  <td class="statNumber" id="playerThreeAssists">-</td>
+                  <td class="statNumber" id="playerThreeMinutes">-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="topTeamsSection">
+  <h2>Top 3 Equipos</h2>
+  <div class="teamsSectionContainer">
+    <table class="teamsMainTable">
+      <thead>
+        <tr>
+          <th>Top</th>
+          <th>Equipo</th>
+          <th>Partidos</th>
+          <th>Goles</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="team1">
+          <td>1</td>
+          <td>
+            <img id="teamOneLogo" src="" alt="Logo">
+            <span id="teamOneName"></span>
+          </td>
+          <td id="teamOnePlayed"></td>
+          <td id="teamOneGoals"></td>
+        </tr>
+        <tr id="team2">
+          <td>2</td>
+          <td>
+            <img id="teamTwoLogo" src="" alt="Logo">
+            <span id="teamTwoName"></span>
+          </td>
+          <td id="teamTwoPlayed"></td>
+          <td id="teamTwoGoals"></td>
+        </tr>
+        <tr id="team3">
+          <td>3</td>
+          <td>
+            <img id="teamThreeLogo" src="" alt="Logo"> 
+            <span id="teamThreeName"></span>
+          </td>
+          <td id="teamThreePlayed"></td>
+          <td id="teamThreeGoals"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+    </main>
+    <footer>
+
+    </footer>
+
+    <script src="JS/topTeams.js"></script>
+  </body>
 </html>

@@ -1,0 +1,112 @@
+body{
+    background-color: #d1d4d1;
+    min-width: 800px;
+    margin: 0px;
+
+    font-family: inter;
+}
+
+main{
+    padding: 20px;
+}
+
+hr.Empty50px{
+    border: none;
+    height: 50px;
+}
+
+h1.NameSection{
+    margin-left: 20px;
+}
+
+div.AllTables{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 25px;
+
+    margin-bottom: 20px;
+}
+
+div.BodyTable{
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+
+    width: fit-content;
+}
+
+table.TableGroup{
+    background-color: white;
+
+    border-collapse: collapse;
+}
+
+    caption.TitleGroup{
+        margin-bottom: 20px;
+
+        text-align: center;
+        font-weight: bold;
+    }
+
+    td,
+    th.TitleColumn{
+        padding: 12px;
+        text-align: center;
+    }
+
+    tbody.BodyTableInfo{
+        background-color: white;
+
+        
+        border-collapse: collapse;
+        font-size: 16px;
+    }
+
+        td.Pos{
+            width: fit-content;
+        }
+
+        td.Country{
+            width: 150px;
+            text-align: left;
+
+            font-size: 15px;
+        }
+
+            div.CountryData{
+                display: flex;
+
+                align-items: center;
+                justify-content: left;
+                gap: 5px;
+            }
+
+                img.FlagCountry{
+                    width: 40px; 
+                    height: 25px;
+
+                    object-fit: cover;
+                    border: 1px solid;
+                    border-radius: 5px;
+                }
+
+        td.Victory{
+            width: fit-content;
+        }
+
+        td.Tie{
+            width: fit-content;
+        }
+
+        td.Defeats{
+            width: fit-content;
+        }
+
+        td.Goals{
+            width: fit-content;
+        }
+
+        td.Points{
+            width: fit-content;
+        }
