@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>FIFA World Cup 2026</title>    
     <link rel="stylesheet" href="../css/gamesResult.css">
     <link rel="stylesheet" href="../CSS/HeaderNav.css">
     <link rel="stylesheet" href="../JS/HeaderNav.js">
@@ -15,210 +15,41 @@
   </header>
 
   <main>
-    <!-- Contenedor general de todos los días de partidos -->
-<section id="lista-jornadas">
+    <header>
 
-  <!-- ===== UN DÍA (plantilla a repetir 4 veces) ===== -->
-  <div class="jornada" data-fecha="2026-07-07">
+    </header>
+    
+    <section class="filtros-partido">
+            <h1 class="filtros-titulo">Próximos Partidos y Resultados</h1>
+      <p class="filtros-descripcion">
+        Agenda completa del torneo.
+       Filtra y organiza los encuentros según el estado del juego.
+      </p>
 
-    <!-- Banner con la fecha del día -->
-    <!-- JS-TODO: insertar aquí el texto de la fecha real -->
-    <div class="jornada__fecha">
-      <span class="jornada__fecha-texto">martes 07 julio 2026</span>
-    </div>
+      <div class="filtros-botones"> 
+          <button class="filtro-btn activo" data-filtro="todos">Todos</button>
+          <button class="filtro-btn" data-filtro="programados">Programados</button>
+          <button class="filtro-btn" data-filtro="en-vivo">En Vivo</button>
+          <button class="filtro-btn" data-filtro="finalizados">Finalizados</button>
 
-    <!--
-      Contenedor de partidos de este día.
-      JS-TODO: insertar dinámicamente entre 0 y N ".partido" según
-      los partidos programados para esta fecha.
-    -->
-    <div class="jornada__partidos">
+        
 
-      <!-- ===== PARTIDO YA JUGADO (ejemplo/plantilla) ===== -->
-      <div class="partido" data-equipo-local="EEUU" data-equipo-visitante="Belgica">
-
-        <div class="partido__equipos">
-
-          <div class="partido__equipo partido__equipo--local">
-            <!-- JS-TODO: reemplazar por la bandera real del equipo -->
-            <img class="partido__bandera" src="" alt="Bandera de Estados Unidos">
-            <span class="partido__nombre">EE. UU.</span>
-          </div>
-
-          <div class="partido__marcador">
-            <!-- JS-TODO: insertar el marcador real -->
-            <span class="partido__gol partido__gol--local">4</span>
-            <span class="partido__estado">FINAL</span>
-            <span class="partido__gol partido__gol--visitante">1</span>
-          </div>
-
-          <div class="partido__equipo partido__equipo--visitante">
-            <span class="partido__nombre">Bélgica</span>
-            <img class="partido__bandera" src="" alt="Bandera de Bélgica">
-          </div>
-
-        </div>
-
-        <div class="partido__info">
-          <span>Octavos de final</span>
-          <span>Estadio de Seattle (Seattle)</span>
-        </div>
 
       </div>
-      <!-- ===== fin partido ya jugado ===== -->
-
-      <!-- ===== PARTIDO PENDIENTE (ejemplo/plantilla) ===== -->
-      <div class="partido" data-equipo-local="Suiza" data-equipo-visitante="Colombia">
-
-        <div class="partido__equipos">
-
-          <div class="partido__equipo partido__equipo--local">
-            <img class="partido__bandera" src="" alt="Bandera de Suiza">
-            <span class="partido__nombre">Suiza</span>
-          </div>
-
-          <div class="partido__marcador">
-            <!--
-              JS-TODO: si el partido no se ha jugado, no mostrar goles,
-              solo la hora programada.
-            -->
-            <span class="partido__estado partido__estado--hora">22:00</span>
-          </div>
-
-          <div class="partido__equipo partido__equipo--visitante">
-            <span class="partido__nombre">Colombia</span>
-            <img class="partido__bandera" src="" alt="Bandera de Colombia">
-          </div>
-
-        </div>
-
-        <div class="partido__info">
-          <span>Octavos de final</span>
-          <span>Estadio BC Place (Vancouver)</span>
-        </div>
-
-      </div>
-      <!-- ===== fin partido pendiente ===== -->
-
-      <!--
-        Mensaje para cuando NO hay partidos ese día.
-        Oculto por defecto; el JS le quita la clase "oculto" solo si
-        .jornada__partidos termina sin ningún .partido dentro.
-      -->
-      <p class="jornada__sin-partidos oculto">No hay partidos programados para este día.</p>
-
-    </div>
-    <!-- fin .jornada__partidos -->
-
-  </div>
-  <!-- ===== fin de un día ===== -->
 
 
 
-
-
-  
-
-  <!-- ===== Dia 2 (plantilla a repetir 4 veces) ===== -->
-  <div class="jornada" data-fecha="2026-07-08">
-
-    <!-- Banner con la fecha del día -->
-    <!-- JS-TODO: insertar aquí el texto de la fecha real -->
-    <div class="jornada__fecha">
-      <span class="jornada__fecha-texto">miércoles 08 julio 2026</span>
-    </div>
-
-    <!--
-      Contenedor de partidos de este día.
-      JS-TODO: insertar dinámicamente entre 0 y N ".partido" según
-      los partidos programados para esta fecha.
-    -->
-    <div class="jornada__partidos">
-
-      <!-- ===== PARTIDO YA JUGADO (ejemplo/plantilla) ===== -->
-      <div class="partido" data-equipo-local="EEUU" data-equipo-visitante="Belgica">
-
-        <div class="partido__equipos">
-
-          <div class="partido__equipo partido__equipo--local">
-            <!-- JS-TODO: reemplazar por la bandera real del equipo -->
-            <img class="partido__bandera" src="" alt="Bandera de Estados Unidos">
-            <span class="partido__nombre">EE. UU.</span>
-          </div>
-
-          <div class="partido__marcador">
-            <!-- JS-TODO: insertar el marcador real -->
-            <span class="partido__gol partido__gol--local">4</span>
-            <span class="partido__estado">FINAL</span>
-            <span class="partido__gol partido__gol--visitante">1</span>
-          </div>
-
-          <div class="partido__equipo partido__equipo--visitante">
-            <span class="partido__nombre">Bélgica</span>
-            <img class="partido__bandera" src="" alt="Bandera de Bélgica">
-          </div>
-
-        </div>
-
-        <div class="partido__info">
-          <span>Octavos de final</span>
-          <span>Estadio de Seattle (Seattle)</span>
-        </div>
-
-      </div>
-      <!-- ===== fin partido ya jugado ===== -->
-
-      <!-- ===== PARTIDO PENDIENTE (ejemplo/plantilla) ===== -->
-      <div class="partido" data-equipo-local="Suiza" data-equipo-visitante="Colombia">
-
-        <div class="partido__equipos">
-
-          <div class="partido__equipo partido__equipo--local">
-            <img class="partido__bandera" src="" alt="Bandera de Suiza">
-            <span class="partido__nombre">Suiza</span>
-          </div>
-
-          <div class="partido__marcador">
-            <!--
-              JS-TODO: si el partido no se ha jugado, no mostrar goles,
-              solo la hora programada.
-            -->
-            <span class="partido__estado partido__estado--hora">22:00</span>
-          </div>
-
-          <div class="partido__equipo partido__equipo--visitante">
-            <span class="partido__nombre">Colombia</span>
-            <img class="partido__bandera" src="" alt="Bandera de Colombia">
-          </div>
-
-        </div>
-
-        <div class="partido__info">
-          <span>Octavos de final</span>
-          <span>Estadio BC Place (Vancouver)</span>
-        </div>
-
-      </div>
-      <!-- ===== fin partido pendiente ===== -->
-
-      <!--
-        Mensaje para cuando NO hay partidos ese día.
-        Oculto por defecto; el JS le quita la clase "oculto" solo si
-        .jornada__partidos termina sin ningún .partido dentro.
-      -->
-      <p class="jornada__sin-partidos oculto">No hay partidos programados para este día.</p>
-
-    </div>
-    <!-- fin .jornada__partidos -->
-
-  </div>
-  <!-- ===== fin de un día ===== -->
-
-</section>
-    <section id="worldCupsSectionHTML"> 
 
     </section>
+
+    <section id="worldCupsSectionHTML"></section>
   </main>
+
+  <footer>
+ 
+    
+
+  </footer>
 <script src="../js/gamesResult.js"></script>
 <script src="../JS/HeaderNav.js"></script>
 </body>
