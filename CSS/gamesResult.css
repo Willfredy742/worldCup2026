@@ -75,11 +75,12 @@
 }
 
 .escudo {
-  width: 22px;
-  height: 22px;
-  object-fit: contain;
+  width: 40px;
+  height: 25px;
+  object-fit: cover;
   border: 1px solid #000000;
   border-radius: 2px;
+
 }
 
 .marcador {
