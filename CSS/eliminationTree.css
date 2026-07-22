@@ -16,7 +16,7 @@ body {
   padding: 5px;
   border-radius: 5px;
   gap: 5px;
-  width: 45%;
+  width: 56%;
   position: relative;
   z-index: 1;
   cursor: pointer;
@@ -164,4 +164,33 @@ main {
 
 .team.hl-third {
   border-color: #cd7f32;
+}
+
+.match-status {
+  width: 56%;
+  font-size: 0.62em;
+  color: #888;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  line-height: 1;
+  margin: 0 0 2px;
+}
+
+.team-score {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.team-goals {
+  font-weight: 700;
+}
+
+.team-pen {
+  color: #e74c3c;
+  font-size: 0.7em;
+  font-weight: 600;
 }

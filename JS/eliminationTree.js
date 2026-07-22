@@ -44,8 +44,12 @@ function fillMatch(match) {
   const homeEl = matchEl.querySelector('[data-slot="home"]');
   const awayEl = matchEl.querySelector('[data-slot="away"]');
 
-  fillTeam(homeEl, match.homeTeam);
-  fillTeam(awayEl, match.awayTeam);
+fillTeam(homeEl, match.homeTeam);
+fillTeam(awayEl, match.awayTeam);
+
+renderStatus(matchEl, match.status);     // estado arriba del partido
+renderScore(homeEl, match.score, 'home');
+renderScore(awayEl, match.score, 'away');
 
   homeEl.classList.remove('winner');
   awayEl.classList.remove('winner');
@@ -104,6 +108,70 @@ function applyMedalBorders() {
 
     markTeam(third.tla, "third-place");
   }
+}
+
+const STATUS_ES = {
+  SCHEDULED: 'Programado',
+  TIMED: 'Programado',
+  IN_PROGRESS: 'En juego',
+  LIVE: 'En juego',
+  PAUSED: 'Descanso',
+  FINISHED: 'Finalizado',
+  POSTPONED: 'Aplazado',
+  SUSPENDED: 'Suspendido',
+  CANCELLED: 'Cancelado',
+  AWARDED: 'Resuelto por sanción',
+};
+
+function matchStatusEs(status) {
+  return STATUS_ES[status] || status || '';
+}
+
+function footballGoals(score, side) {
+  if (!score) return null;
+  if (score.duration === 'PENALTY_SHOOTOUT') {
+    const rt = score.regularTime || {};
+    const et = score.extraTime || {};
+    return (rt[side] || 0) + (et[side] || 0);
+  }
+  const ft = score.fullTime || {};
+  return ft[side] ?? null;
+}
+
+function penaltyGoals(score, side) {
+  if (!score || score.duration !== 'PENALTY_SHOOTOUT') return null;
+  const p = score.penalties || {};
+  return p[side] ?? null;
+}
+
+function renderStatus(matchEl, status) {
+  if (!matchEl) return;
+  let statusEl = matchEl.querySelector('.match-status');
+  if (!statusEl) {
+    statusEl = document.createElement('div');
+    statusEl.className = 'match-status';
+    matchEl.insertBefore(statusEl, matchEl.firstChild);
+  }
+  statusEl.textContent = matchStatusEs(status);
+}
+
+function renderScore(teamEl, score, side) {
+  if (!teamEl) return;
+  let scoreEl = teamEl.querySelector('.team-score');
+  if (!scoreEl) {
+    scoreEl = document.createElement('span');
+    scoreEl.className = 'team-score';
+    teamEl.appendChild(scoreEl);
+  }
+
+  const goals = footballGoals(score, side);
+  const pen = penaltyGoals(score, side);
+
+  let html = '<span class="team-goals">' + (goals == null ? '-' : goals) + '</span>';
+  if (pen != null) {
+    html += '<span class="team-pen" title="Penaltis">(' + pen + ')</span>';
+  }
+  scoreEl.innerHTML = html;
 }
 
 loadEliminationTree();
