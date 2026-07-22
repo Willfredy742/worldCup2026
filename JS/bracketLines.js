@@ -1,133 +1,194 @@
 (function () {
   "use strict";
 
-  const RADIUS = 10;
-  const STROKE_COLOR = "#555";
-  const STROKE_WIDTH = 2;
-  const HIGHLIGHT_WIDTH = 3.5;
+  const radius = 10;
+  const strokeColor = "#555";
+  const strokeWidth = 2;
+  const highlightWidth = 3.5;
+  const straightLineThreshold = 1;
+  const redrawDelayMs = 100;
+  const svgNamespace = "http://www.w3.org/2000/svg";
 
-  const CONNECTIONS = [
-    // LADO A
-    ["p74", "p89", "A"],
-    ["p77", "p89", "A"],
-    ["p73", "p90", "A"],
-    ["p75", "p90", "A"],
-    ["p83", "p93", "A"],
-    ["p84", "p93", "A"],
-    ["p81", "p94", "A"],
-    ["p82", "p94", "A"],
-    ["p89", "p97", "A"],
-    ["p90", "p97", "A"],
-    ["p93", "p98", "A"],
-    ["p94", "p98", "A"],
-    ["p97", "p101", "A"],
-    ["p98", "p101", "A"],
-    ["p101", "final", "A"],
-    ["p101", "thirdAndFourPlace", "A"],
-    // LADO B
-    ["p76", "p91", "B"],
-    ["p78", "p91", "B"],
-    ["p79", "p92", "B"],
-    ["p80", "p92", "B"],
-    ["p86", "p95", "B"],
-    ["p88", "p95", "B"],
-    ["p85", "p96", "B"],
-    ["p87", "p96", "B"],
-    ["p91", "p99", "B"],
-    ["p92", "p99", "B"],
-    ["p95", "p100", "B"],
-    ["p96", "p100", "B"],
-    ["p99", "p102", "B"],
-    ["p100", "p102", "B"],
-    ["p102", "final", "B"],
-    ["p102", "thirdAndFourPlace", "B"],
-  ];
+  const bracketSide = Object.freeze({
+    a: "A",
+    b: "B"
+  });
 
-  const SOURCES = {};
-  CONNECTIONS.forEach(function (conn) {
-    if (!SOURCES[conn[1]]) SOURCES[conn[1]] = [];
-    SOURCES[conn[1]].push(conn[0]);
+  const connections = Object.freeze([
+    Object.freeze({ from: "p74", to: "p89", side: bracketSide.a }),
+    Object.freeze({ from: "p77", to: "p89", side: bracketSide.a }),
+    Object.freeze({ from: "p73", to: "p90", side: bracketSide.a }),
+    Object.freeze({ from: "p75", to: "p90", side: bracketSide.a }),
+    Object.freeze({ from: "p83", to: "p93", side: bracketSide.a }),
+    Object.freeze({ from: "p84", to: "p93", side: bracketSide.a }),
+    Object.freeze({ from: "p81", to: "p94", side: bracketSide.a }),
+    Object.freeze({ from: "p82", to: "p94", side: bracketSide.a }),
+    Object.freeze({ from: "p89", to: "p97", side: bracketSide.a }),
+    Object.freeze({ from: "p90", to: "p97", side: bracketSide.a }),
+    Object.freeze({ from: "p93", to: "p98", side: bracketSide.a }),
+    Object.freeze({ from: "p94", to: "p98", side: bracketSide.a }),
+    Object.freeze({ from: "p97", to: "p101", side: bracketSide.a }),
+    Object.freeze({ from: "p98", to: "p101", side: bracketSide.a }),
+    Object.freeze({ from: "p101", to: "final", side: bracketSide.a }),
+    Object.freeze({ from: "p101", to: "thirdAndFourthPlace", side: bracketSide.a }),
+
+    Object.freeze({ from: "p76", to: "p91", side: bracketSide.b }),
+    Object.freeze({ from: "p78", to: "p91", side: bracketSide.b }),
+    Object.freeze({ from: "p79", to: "p92", side: bracketSide.b }),
+    Object.freeze({ from: "p80", to: "p92", side: bracketSide.b }),
+    Object.freeze({ from: "p86", to: "p95", side: bracketSide.b }),
+    Object.freeze({ from: "p88", to: "p95", side: bracketSide.b }),
+    Object.freeze({ from: "p85", to: "p96", side: bracketSide.b }),
+    Object.freeze({ from: "p87", to: "p96", side: bracketSide.b }),
+    Object.freeze({ from: "p91", to: "p99", side: bracketSide.b }),
+    Object.freeze({ from: "p92", to: "p99", side: bracketSide.b }),
+    Object.freeze({ from: "p95", to: "p100", side: bracketSide.b }),
+    Object.freeze({ from: "p96", to: "p100", side: bracketSide.b }),
+    Object.freeze({ from: "p99", to: "p102", side: bracketSide.b }),
+    Object.freeze({ from: "p100", to: "p102", side: bracketSide.b }),
+    Object.freeze({ from: "p102", to: "final", side: bracketSide.b }),
+    Object.freeze({ from: "p102", to: "thirdAndFourthPlace", side: bracketSide.b })
+  ]);
+
+  const sources = {};
+
+  connections.forEach(function (connection) {
+    if (!sources[connection.to]) {
+      sources[connection.to] = [];
+    }
+
+    sources[connection.to].push(connection.from);
   });
 
   let svg = null;
-  let cachedEls = null;
+  let cachedElements = null;
   let currentHighlight = null;
+  let redrawTimeout = null;
+  let observer = null;
+  let observerTarget = null;
+
+  const observerOptions = Object.freeze({
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ["src", "style", "class"]
+  });
 
   function buildIndex() {
-    const map = {};
-    document.querySelectorAll("[data-fifa-number]").forEach(function (el) {
-      const key = (el.getAttribute("data-fifa-number") || "").trim();
-      if (key) map[key] = el;
+    const elementsByKey = {};
+
+    document.querySelectorAll("[data-fifa-number]").forEach(function (element) {
+      const key = (element.getAttribute("data-fifa-number") || "").trim();
+
+      if (key) {
+        elementsByKey[key] = element;
+      }
     });
-    const f = document.getElementById("final");
-    const t = document.getElementById("thirdAndFourPlace");
-    if (f) map["final"] = f;
-    if (t) map["thirdAndFourPlace"] = t;
-    return map;
-  }
 
-  function getMatchEl(id) {
-    if (!cachedEls) cachedEls = buildIndex();
-    return cachedEls[id] || null;
-  }
+    const finalElement = document.getElementById("final");
+    const thirdPlaceElement = document.getElementById("thirdAndFourthPlace");
 
-  function getUntransformedRect(n) {
-    const r = n.getBoundingClientRect();
-    const transform = window.getComputedStyle(n).transform;
-
-    if (!transform || transform === "none") return r;
-
-    let a = 1, b = 0, c = 0, d = 1;
-
-    if (transform.startsWith("matrix3d(")) {
-      const p = transform.slice(9, -1).split(",").map(parseFloat);
-      a = p[0]; b = p[1]; c = p[4]; d = p[5];
-    } else if (transform.startsWith("matrix(")) {
-      const p = transform.slice(7, -1).split(",").map(parseFloat);
-      a = p[0]; b = p[1]; c = p[2]; d = p[3];
-    } else {
-      return r;
+    if (finalElement) {
+      elementsByKey.final = finalElement;
     }
 
-    const scaleX = Math.hypot(a, b) || 1;
-    const scaleY = Math.hypot(c, d) || 1;
-    const centerX = r.left + r.width / 2;
-    const centerY = r.top + r.height / 2;
-    const width = r.width / scaleX;
-    const height = r.height / scaleY;
+    if (thirdPlaceElement) {
+      elementsByKey.thirdAndFourthPlace = thirdPlaceElement;
+    }
+
+    return elementsByKey;
+  }
+
+  function getMatchElement(matchKey) {
+    if (!cachedElements) {
+      cachedElements = buildIndex();
+    }
+
+    return cachedElements[matchKey] || null;
+  }
+
+  function parseTransformMatrix(transform) {
+    if (transform.startsWith("matrix3d(")) {
+      const parts = transform.slice(9, -1).split(",").map(parseFloat);
+
+      return {
+        a: parts[0],
+        b: parts[1],
+        c: parts[4],
+        d: parts[5]
+      };
+    }
+
+    if (transform.startsWith("matrix(")) {
+      const parts = transform.slice(7, -1).split(",").map(parseFloat);
+
+      return {
+        a: parts[0],
+        b: parts[1],
+        c: parts[2],
+        d: parts[3]
+      };
+    }
+
+    return null;
+  }
+
+  function getUntransformedRect(node) {
+    const rect = node.getBoundingClientRect();
+    const transform = window.getComputedStyle(node).transform;
+
+    if (!transform || transform === "none") {
+      return rect;
+    }
+
+    const matrix = parseTransformMatrix(transform);
+
+    if (!matrix) {
+      return rect;
+    }
+
+    const scaleX = Math.hypot(matrix.a, matrix.b) || 1;
+    const scaleY = Math.hypot(matrix.c, matrix.d) || 1;
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const width = rect.width / scaleX;
+    const height = rect.height / scaleY;
 
     return {
       left: centerX - width / 2,
       top: centerY - height / 2,
       right: centerX + width / 2,
-      bottom: centerY + height / 2,
+      bottom: centerY + height / 2
     };
   }
 
-  function getBox(el, containerRect) {
-    let nodes = el.querySelectorAll(".team");
-    if (!nodes.length) nodes = el.querySelectorAll("[data-slot]");
+  function getBox(element, containerRect) {
+    const teamElements = element.querySelectorAll(".team");
+    const measuredElements = teamElements.length
+      ? teamElements
+      : element.querySelectorAll("[data-slot]");
 
-    let left, top, right, bottom;
+    let left = Infinity;
+    let top = Infinity;
+    let right = -Infinity;
+    let bottom = -Infinity;
 
-    if (nodes.length) {
-      left = Infinity;
-      top = Infinity;
-      right = -Infinity;
-      bottom = -Infinity;
-      nodes.forEach(function (n) {
-        const r = getUntransformedRect(n);
-        if (r.left < left) left = r.left;
-        if (r.top < top) top = r.top;
-        if (r.right > right) right = r.right;
-        if (r.bottom > bottom) bottom = r.bottom;
+    if (measuredElements.length) {
+      measuredElements.forEach(function (node) {
+        const rect = getUntransformedRect(node);
+
+        left = Math.min(left, rect.left);
+        top = Math.min(top, rect.top);
+        right = Math.max(right, rect.right);
+        bottom = Math.max(bottom, rect.bottom);
       });
     } else {
-      const r = getUntransformedRect(el);
-      left = r.left;
-      top = r.top;
-      right = r.right;
-      bottom = r.bottom;
+      const rect = getUntransformedRect(element);
+
+      left = rect.left;
+      top = rect.top;
+      right = rect.right;
+      bottom = rect.bottom;
     }
 
     return {
@@ -135,70 +196,100 @@
       right: right - containerRect.left,
       top: top - containerRect.top,
       bottom: bottom - containerRect.top,
-      centerY: (top + bottom) / 2 - containerRect.top,
+      centerY: (top + bottom) / 2 - containerRect.top
     };
   }
 
   function buildElbowPath(x1, y1, x2, y2, side) {
     const midX = (x1 + x2) / 2;
 
-    if (Math.abs(y2 - y1) < 1) {
-      return "M " + x1 + ", " + y1 + " L " + x2 + ", " + y2;
+    if (Math.abs(y2 - y1) < straightLineThreshold) {
+      return `M ${x1}, ${y1} L ${x2}, ${y2}`;
     }
 
-    const r = Math.min(
-      RADIUS,
+    const cornerRadius = Math.min(
+      radius,
       Math.abs(y2 - y1) / 2,
       Math.abs(midX - x1),
       Math.abs(x2 - midX)
     );
-    const dir = y2 > y1 ? 1 : -1;
 
-    if (side === "A") {
+    const direction = y2 > y1 ? 1 : -1;
+
+    if (side === bracketSide.a) {
       return [
-        "M " + x1 + ", " + y1,
-        "H " + (midX - r),
-        "Q " + midX + ", " + y1 + " " + midX + ", " + (y1 + dir * r),
-        "V " + (y2 - dir * r),
-        "Q " + midX + ", " + y2 + " " + (midX + r) + ", " + y2,
-        "H " + x2,
+        `M ${x1}, ${y1}`,
+        `H ${midX - cornerRadius}`,
+        `Q ${midX}, ${y1} ${midX}, ${y1 + direction * cornerRadius}`,
+        `V ${y2 - direction * cornerRadius}`,
+        `Q ${midX}, ${y2} ${midX + cornerRadius}, ${y2}`,
+        `H ${x2}`
       ].join(" ");
     }
 
     return [
-      "M " + x1 + ", " + y1,
-      "H " + (midX + r),
-      "Q " + midX + ", " + y1 + " " + midX + ", " + (y1 + dir * r),
-      "V " + (y2 - dir * r),
-      "Q " + midX + ", " + y2 + " " + (midX - r) + ", " + y2,
-      "H " + x2,
+      `M ${x1}, ${y1}`,
+      `H ${midX + cornerRadius}`,
+      `Q ${midX}, ${y1} ${midX}, ${y1 + direction * cornerRadius}`,
+      `V ${y2 - direction * cornerRadius}`,
+      `Q ${midX}, ${y2} ${midX - cornerRadius}, ${y2}`,
+      `H ${x2}`
     ].join(" ");
   }
 
-  function applyHighlight() {
-    if (!svg) return;
-    svg.querySelectorAll("path").forEach(function (p) {
-      p.setAttribute("stroke", STROKE_COLOR);
-      p.setAttribute("stroke-width", STROKE_WIDTH);
+  function setAttributes(element, attributes) {
+    Object.entries(attributes).forEach(function (entry) {
+      element.setAttribute(entry[0], entry[1]);
     });
-    if (!currentHighlight) return;
+  }
+
+  function applyHighlight() {
+    if (!svg) {
+      return;
+    }
+
+    svg.querySelectorAll("path").forEach(function (path) {
+      path.setAttribute("stroke", strokeColor);
+      path.setAttribute("stroke-width", strokeWidth);
+    });
+
+    if (!currentHighlight) {
+      return;
+    }
+
     currentHighlight.pairs.forEach(function (pair) {
-      const p = svg.querySelector(
-        'path[data-from="' + pair[0] + '"][data-to="' + pair[1] + '"]'
+      const path = svg.querySelector(
+        `path[data-from="${pair.from}"][data-to="${pair.to}"]`
       );
-      if (p) {
-        p.setAttribute("stroke", currentHighlight.color);
-        p.setAttribute("stroke-width", HIGHLIGHT_WIDTH);
+
+      if (!path) {
+        return;
       }
+
+      path.setAttribute("stroke", currentHighlight.color);
+      path.setAttribute("stroke-width", highlightWidth);
     });
   }
 
   function highlightRoute(matchIds, color) {
-    const pairs = [];
-    for (let i = 0; i < matchIds.length - 1; i++) {
-      pairs.push([matchIds[i], matchIds[i + 1]]);
+    if (!Array.isArray(matchIds) || !color) {
+      return;
     }
-    currentHighlight = { pairs: pairs, color: color };
+
+    const pairs = [];
+
+    for (let index = 0; index < matchIds.length - 1; index += 1) {
+      pairs.push({
+        from: matchIds[index],
+        to: matchIds[index + 1]
+      });
+    }
+
+    currentHighlight = {
+      pairs: pairs,
+      color: color
+    };
+
     applyHighlight();
   }
 
@@ -209,92 +300,155 @@
 
   function drawLines() {
     const main = document.querySelector("main");
-    if (!main) return;
 
-    if (!svg) {
-      svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-      svg.setAttribute("class", "bracket-lines");
-      svg.style.position = "absolute";
-      svg.style.top = "0";
-      svg.style.left = "0";
-      svg.style.width = "100%";
-      svg.style.height = "100%";
-      svg.style.pointerEvents = "none";
-      svg.style.overflow = "visible";
-      svg.style.zIndex = "0";
-      main.style.position = "relative";
-      main.appendChild(svg);
+    if (!main) {
+      return;
     }
 
-    svg.innerHTML = "";
-    cachedEls = null;
+    if (observer) {
+      observer.disconnect();
+    }
 
-    const containerRect = main.getBoundingClientRect();
+    try {
+      if (!svg) {
+        svg = document.createElementNS(svgNamespace, "svg");
 
-    CONNECTIONS.forEach(function (conn) {
-      const fromEl = getMatchEl(conn[0]);
-      const toEl = getMatchEl(conn[1]);
-      if (!fromEl || !toEl) return;
+        setAttributes(svg, {
+          class: "bracketLines"
+        });
 
-      const from = getBox(fromEl, containerRect);
-      const to = getBox(toEl, containerRect);
+        Object.assign(svg.style, {
+          position: "absolute",
+          top: "0",
+          left: "0",
+          width: "100%",
+          height: "100%",
+          pointerEvents: "none",
+          overflow: "visible",
+          zIndex: "0"
+        });
 
-      let x1, y1, x2, y2;
-      if (conn[2] === "A") {
-        x1 = from.right;  y1 = from.centerY;
-        x2 = to.left;     y2 = to.centerY;
-      } else {
-        x1 = from.left;   y1 = from.centerY;
-        x2 = to.right;    y2 = to.centerY;
+        if (main.style.position !== "relative") {
+          main.style.position = "relative";
+        }
+
+        main.appendChild(svg);
       }
 
-      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-      path.setAttribute("d", buildElbowPath(x1, y1, x2, y2, conn[2]));
-      path.setAttribute("fill", "none");
-      path.setAttribute("stroke", STROKE_COLOR);
-      path.setAttribute("stroke-width", STROKE_WIDTH);
-      path.setAttribute("stroke-linecap", "round");
-      path.setAttribute("stroke-linejoin", "round");
-      path.setAttribute("data-from", conn[0]);
-      path.setAttribute("data-to", conn[1]);
-      svg.appendChild(path);
-    });
+      svg.replaceChildren();
+      cachedElements = null;
 
-    applyHighlight();
+      const containerRect = main.getBoundingClientRect();
+
+      connections.forEach(function (connection) {
+        const fromElement = getMatchElement(connection.from);
+        const toElement = getMatchElement(connection.to);
+
+        if (!fromElement || !toElement) {
+          return;
+        }
+
+        const fromBox = getBox(fromElement, containerRect);
+        const toBox = getBox(toElement, containerRect);
+
+        let x1;
+        let y1;
+        let x2;
+        let y2;
+
+        if (connection.side === bracketSide.a) {
+          x1 = fromBox.right;
+          y1 = fromBox.centerY;
+          x2 = toBox.left;
+          y2 = toBox.centerY;
+        } else {
+          x1 = fromBox.left;
+          y1 = fromBox.centerY;
+          x2 = toBox.right;
+          y2 = toBox.centerY;
+        }
+
+        const path = document.createElementNS(svgNamespace, "path");
+
+        setAttributes(path, {
+          d: buildElbowPath(x1, y1, x2, y2, connection.side),
+          fill: "none",
+          stroke: strokeColor,
+          "stroke-width": strokeWidth,
+          "stroke-linecap": "round",
+          "stroke-linejoin": "round",
+          "data-from": connection.from,
+          "data-to": connection.to
+        });
+
+        svg.appendChild(path);
+      });
+
+      applyHighlight();
+    } finally {
+      if (observer) {
+        observerTarget = main;
+        observer.observe(observerTarget, observerOptions);
+      }
+    }
+  }
+
+  function scheduleRedraw() {
+    clearTimeout(redrawTimeout);
+    redrawTimeout = setTimeout(drawLines, redrawDelayMs);
+  }
+
+  function isRelevantMutation(mutation) {
+    if (mutation.type !== "attributes") {
+      return true;
+    }
+
+    if (mutation.attributeName !== "class") {
+      return true;
+    }
+
+    const target = mutation.target;
+
+    return !(target instanceof Element && target.classList.contains("team"));
+  }
+
+  function handleMainMutations(mutations) {
+    if (!mutations.some(isRelevantMutation)) {
+      return;
+    }
+
+    scheduleRedraw();
+  }
+
+  function observeMain(main) {
+    if (observer) {
+      observer.disconnect();
+    }
+
+    observerTarget = main;
+    observer = new MutationObserver(handleMainMutations);
+    observer.observe(observerTarget, observerOptions);
   }
 
   window.addEventListener("load", drawLines);
-  window.addEventListener("resize", drawLines);
+  window.addEventListener("resize", scheduleRedraw);
 
   document.addEventListener("DOMContentLoaded", function () {
     const main = document.querySelector("main");
-    if (!main) return;
 
-    let timeout = null;
-    const observer = new MutationObserver(function (mutations) {
-      const relevant = mutations.some(function (m) {
-        if (m.type !== "attributes" || m.attributeName !== "class") return true;
-        return !(m.target.classList && m.target.classList.contains("team"));
-      });
-      if (!relevant) return;
-      clearTimeout(timeout);
-      timeout = setTimeout(drawLines, 100);
-    });
+    if (!main) {
+      return;
+    }
 
-    observer.observe(main, {
-      childList: true,
-      subtree: true,
-      attributes: true,
-      attributeFilter: ["src", "style", "class"],
-    });
+    observeMain(main);
   });
 
-  window.bracketLines = {
+  window.bracketLines = Object.freeze({
     redraw: drawLines,
     highlightRoute: highlightRoute,
     clearHighlight: clearHighlight,
     sourcesOf: function (matchId) {
-      return (SOURCES[matchId] || []).slice();
-    },
-  };
+      return (sources[matchId] || []).slice();
+    }
+  });
 })();

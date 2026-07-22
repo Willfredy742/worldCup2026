@@ -1,7 +1,7 @@
 (function () {
   "use strict";
-  
-  const COUNTRY_ES = {
+
+  const countryNamesEs = Object.freeze({
     Algeria: "Argelia",
     Argentina: "Argentina",
     Australia: "Australia",
@@ -49,12 +49,21 @@
     Turkey: "Turquía",
     "United States": "Estados Unidos",
     Uruguay: "Uruguay",
-    Uzbekistan: "Uzbekistán",
-  };
+    Uzbekistan: "Uzbekistán"
+  });
 
   function translateCountry(name) {
-    if (name == null) return name;
-    return COUNTRY_ES[name] ?? name; // si no está, devuelve el original
+    if (name === null || name === undefined) {
+      return name;
+    }
+
+    if (typeof name !== "string") {
+      return name;
+    }
+
+    const normalizedName = name.trim();
+
+    return countryNamesEs[normalizedName] ?? name;
   }
 
   window.translateCountry = translateCountry;
