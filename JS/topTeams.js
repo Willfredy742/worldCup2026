@@ -271,9 +271,9 @@ async function calcularTablaDesdePartidos() {
             return b.gf - a.gf;
         });
 
-        // ==========================================
-        // PINTAR EL TOP 3 CON TUS IDs REALES DEL HTML
-        // ==========================================
+        
+        
+        
         const top3 = tablaOrdenada.slice(0, 3);
         const idSuffixes = ['One', 'Two', 'Three'];
 
