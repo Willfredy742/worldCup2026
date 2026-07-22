@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -8,158 +8,52 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <title>World Cup 2026</title>
-    <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="../CSS/HeaderNav.css">
     <link rel="stylesheet" href="../CSS/Groups.css">
     <link rel="stylesheet" href="../CSS/footer.css">
+    <link rel="stylesheet" href="../JS/HeaderNav.js">
     <link rel="stylesheet" href="../JS/Groups.js">
 </head>
 
 <body>
 
-    <header>
-        <div class="TittleAndLogo">
-            <img class="loogoWorldCupOfHeader" src="../img/RL_U59_FIFAWorldCupLTE_LogoNoName.png"
-                alt="Imagen oficial de la copa del mundo de 2026">
-            <h1 class="TittleOfHeader">FIFA WORLD CUP 2026</h1>
-        </div>
-    </header>
-
-    <nav>
-        <div class="divNav">
-            <a class="aNav" href="../index.html">Inicio</a>
-        </div>
-        <div class="divNav">
-            <a class="aNav" href="../HTML/gamesResult.html">Resultados</a>
-        </div>
-        <div class="divNav">
-            <a class="aNav" href="../HTML/Groups.html">Grupos</a>
-        </div>
-        <div class="divNav">
-            <a class="aNav" href="../HTML/eliminationTree.htm">Eliminatorias</a>
-        </div>
-        <div class="divNav">
-            <a class="aNav" href="">Estadisticas</a>
-        </div>
-    </nav>
+    <header-nav></header-nav>
 
     <main>
         <hr class="Empty50px">
-
         <h1 class="NameSection">CLASIFICACIÓN POR GRUPOS</h1>
-
         <hr class="Empty50px">
 
-        <div class="AllTables">
+        <div class="AllTables" id="AllTables"></div>
 
+        <template id="GroupTableTemplate">
             <div class="BodyTable">
                 <table class="TableGroup">
-                    <section id="TittleGroupSection"></section>
+                    <caption class="TitleGroup"></caption>
 
                     <thead>
                         <tr>
-                            <th scope="TittleColumn">Pos</th>
-                            <th scope="TittleColumn">País</th>
-                            <th scope="TittleColumn">Vic</th>
-                            <th scope="TittleColumn">Emp</th>
-                            <th scope="TittleColumn">Der</th>
-                            <th scope="TittleColumn">Gol</th>
-                            <th scope="TittleColumn">Pts</th>
+                            <th scope="col" class="TitleColumn">Pos</th>
+                            <th scope="col" class="TitleColumn">País</th>
+                            <th scope="col" class="TitleColumn">Vic</th>
+                            <th scope="col" class="TitleColumn">Emp</th>
+                            <th scope="col" class="TitleColumn">Der</th>
+                            <th scope="col" class="TitleColumn">Gol</th>
+                            <th scope="col" class="TitleColumn">Pts</th>
                         </tr>
                     </thead>
 
-                    <tbody class="BodyTableInfo" id="BodyTableInfo">
-                        <tr>
-                            <td class="Pos">N/A</td>
-                            <td class="Country">
-                                <div class="CountryData">
-                                    <img class="FlagCountry" src="" alt="">
-                                    <span class="NameCountry">N/A</span>
-                                </div>
-                            </td>
-                            <td class="Victory">N/A</td>
-                            <td class="Tie">N/A</td>
-                            <td class="Defeats">N/A</td>
-                            <td class="Goals">N/A</td>
-                            <td class="Points">N/A</td>
-                        </tr>
-                        <tr>
-                            <td class="Pos">N/A</td>
-                            <td class="Country">
-                                <div class="CountryData">
-                                    <img class="FlagCountry" src="" alt="">
-                                    <span class="NameCountry">N/A</span>
-                                </div>
-                            </td>
-                            <td class="Victory">N/A</td>
-                            <td class="Tie">N/A</td>
-                            <td class="Defeats">N/A</td>
-                            <td class="Goals">N/A</td>
-                            <td class="Points">N/A</td>
-                        </tr>
-                        <tr>
-                            <td class="Pos">N/A</td>
-                            <td class="Country">
-                                <div class="CountryData">
-                                    <img class="FlagCountry" src="" alt="">
-                                    <span class="NameCountry">N/A</span>
-                                </div>
-                            </td>
-                            <td class="Victory">N/A</td>
-                            <td class="Tie">N/A</td>
-                            <td class="Defeats">N/A</td>
-                            <td class="Goals">N/A</td>
-                            <td class="Points">N/A</td>
-                        </tr>
-                        <tr>
-                            <td class="Pos">N/A</td>
-                            <td class="Country">
-                                <div class="CountryData">
-                                    <img class="FlagCountry" src="" alt="">
-                                    <span class="NameCountry">N/A</span>
-                                </div>
-                            </td>
-                            <td class="Victory">N/A</td>
-                            <td class="Tie">N/A</td>
-                            <td class="Defeats">N/A</td>
-                            <td class="Goals">N/A</td>
-                            <td class="Points">N/A</td>
-                        </tr>
-                    </tbody>
+                    <tbody class="BodyTableInfo"></tbody>
                 </table>
             </div>
-        </div>
+        </template>
     </main>
 
+    <footer id="footer"></footer>
 
-    <footer>
-        <img class="footer-logo" src="../img/fifaWorldCup2026Logo.svg" alt="Logo de la FIFA World Cup 2026" />
-
-        <div class="footer-content">
-            <div class="footer-info">
-                <div class="footer-social">
-                    <img src="../img/x.svg" alt="Logo de la red social X (Twitter)" />
-                    <img src="../img/facebook.svg" alt="Logo de la red social Facebook" />
-                    <img src="../img/instagram.svg" alt="Logo de la red social Instagram" />
-                    <img src="../img/tiktok.svg" alt="Logo de la red social TikTok" />
-                </div>
-
-                <div class="footer-text">
-                    <p>
-                        Datos provenientes de la API
-                        <a href="https://www.football-data.org/" target="_blank">football-data.org.</a>
-                        La web ha sido creada con fines educativos. No se infringen
-                        derechos de autor.
-                    </p>
-                </div>
-            </div>
-
-            <ul class="footer-links">
-                <li>Política de privacidad</li>
-                <li>Términos de servicio</li>
-                <li>Ajustar la configuración de las cookies</li>
-            </ul>
-        </div>
-    </footer>
+    <script src="../JS/HeaderNav.js"></script>
+    <script src="../JS/Groups.js"></script>
+    <script src="../JS/footer.js"></script>
 </body>
 
 </html>
