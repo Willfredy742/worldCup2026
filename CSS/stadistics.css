@@ -40,6 +40,7 @@ table.TableTeams{
 
     td.Player,
     td.Team{
+        justify-content: center;
         text-align: left;
     }
 
