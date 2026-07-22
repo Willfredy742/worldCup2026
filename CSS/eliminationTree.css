@@ -1,10 +1,12 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   background-color: #EAEAEA;
   margin: 0;
 }
+
 .team {
   border: 1px solid black;
   width: fit-content;
@@ -16,7 +18,7 @@ body {
   padding: 5px;
   border-radius: 5px;
   gap: 5px;
-  width: 56%;
+  width: 60%;
   position: relative;
   z-index: 1;
   cursor: pointer;
@@ -25,45 +27,35 @@ body {
   transform-origin: center;
   box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.6);
 }
+
 .team:hover {
   transform: scale(1.05);
   z-index: 10;
 }
+
 .team.scale-champion,
 .team.scale-champion:hover {
   transform: scale(1.18);
   z-index: 10;
 }
+
 .team.scale-runner-up,
 .team.scale-runner-up:hover {
   transform: scale(1.12);
   z-index: 10;
 }
+
 .team.scale-third,
 .team.scale-third:hover {
   transform: scale(1.09);
   z-index: 10;
 }
+
 .team-flag {
   width: 28px;
   height: 20px;
   object-fit: cover;
   margin-right: 5px;
-}
-
-.round-labels {
-  display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  margin-bottom: 10px;
-}
-.round-labels h4,
-.round-labels h3 {
-  margin: 0;
-}
-.final-labels {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
 }
 
 main {
@@ -72,14 +64,17 @@ main {
   grid-template-rows: repeat(8, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 30px;
-  height: 90vh;
+  min-height: 90vh;
+  margin-left: 50px;
 }
 
 .match {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100%;
+  padding-top: 2em;
 }
 
 #sideA, #roundOf32sideA, #roundOf16sideA, #quarterfinalSideA, #semifinalSideA,
@@ -87,7 +82,6 @@ main {
   display: contents;
 }
 
-/* roundOf32sideA */
 [data-fifa-number="p74"] { grid-area: 1 / 1 / 2 / 2; }
 [data-fifa-number="p77"] { grid-area: 2 / 1 / 3 / 2; }
 [data-fifa-number="p73"] { grid-area: 3 / 1 / 4 / 2; }
@@ -97,36 +91,29 @@ main {
 [data-fifa-number="p81"] { grid-area: 7 / 1 / 8 / 2; }
 [data-fifa-number="p82"] { grid-area: 8 / 1 / 9 / 2; }
 
-/* roundOf16sideA */
 [data-fifa-number="p89"] { grid-area: 1 / 2 / 3 / 3; }
 [data-fifa-number="p90"] { grid-area: 3 / 2 / 5 / 3; }
 [data-fifa-number="p93"] { grid-area: 5 / 2 / 7 / 3; }
 [data-fifa-number="p94"] { grid-area: 7 / 2 / 9 / 3; }
 
-/* quarterfinalSideA */
 [data-fifa-number="p97"] { grid-area: 1 / 3 / 5 / 4; }
 [data-fifa-number="p98"] { grid-area: 5 / 3 / 9 / 4; }
 
-/* semifinalSideA */
 [data-fifa-number="p101"] { grid-area: 1 / 4 / 9 / 5; }
 
 #final { grid-area: 1 / 5 / 5 / 6; }
 #thirdAndFourPlace { grid-area: 5 / 5 / 9 / 6; }
 
-/* semifinalSideB */
 [data-fifa-number="p102"] { grid-area: 1 / 6 / 9 / 7; }
 
-/* quarterfinalSideB */
 [data-fifa-number="p99"] { grid-area: 1 / 7 / 5 / 8; }
 [data-fifa-number="p100"] { grid-area: 5 / 7 / 9 / 8; }
 
-/* roundOf16sideB */
 [data-fifa-number="p91"] { grid-area: 1 / 8 / 3 / 9; }
 [data-fifa-number="p92"] { grid-area: 3 / 8 / 5 / 9; }
 [data-fifa-number="p95"] { grid-area: 5 / 8 / 7 / 9; }
 [data-fifa-number="p96"] { grid-area: 7 / 8 / 9 / 9; }
 
-/* roundOf32sideB */
 [data-fifa-number="p76"] { grid-area: 1 / 9 / 2 / 10; }
 [data-fifa-number="p78"] { grid-area: 2 / 9 / 3 / 10; }
 [data-fifa-number="p79"] { grid-area: 3 / 9 / 4 / 10; }
@@ -135,6 +122,7 @@ main {
 [data-fifa-number="p88"] { grid-area: 6 / 9 / 7 / 10; }
 [data-fifa-number="p85"] { grid-area: 7 / 9 / 8 / 10; }
 [data-fifa-number="p87"] { grid-area: 8 / 9 / 9 / 10; }
+
 .team.champion {
   border: 2px solid #ffd700;
 }
@@ -146,6 +134,7 @@ main {
 .team.third-place {
   border: 2px solid #cd7f32;
 }
+
 .team.hl-win {
   border-color: #2ecc71;
 }
@@ -167,8 +156,9 @@ main {
 }
 
 .match-status {
-  width: 56%;
-  font-size: 0.62em;
+  order: -1;
+  width: 60%;
+  font-size: 0.7em;
   color: #888;
   text-align: center;
   text-transform: uppercase;
@@ -193,4 +183,18 @@ main {
   color: #e74c3c;
   font-size: 0.7em;
   font-weight: 600;
+}
+
+.match-title {
+  width: 60%;
+  order: -2;
+  width: 58%;
+  text-align: center;
+  line-height: 1.1;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin: 1%;
 }
