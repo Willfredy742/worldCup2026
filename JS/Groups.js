@@ -1,10 +1,4 @@
-/*
-Estadísticas de los equipos (clasificación TOTAL, sin grupos):
-https://api.football-data.org/v4/competitions/WC/standings?season=2026
 
-Partidos de fase de grupos (cada partido indica su grupo):
-https://api.football-data.org/v4/competitions/WC/matches?season=2026&stage=GROUP_STAGE
-*/
 
 
 
