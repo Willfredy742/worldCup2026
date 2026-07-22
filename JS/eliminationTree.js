@@ -63,7 +63,8 @@ function fillTeam(teamEl, team) {
 
   if (team.crest) {
     flagEl.src = team.crest;
-    flagEl.alt = `Bandera de ${team.name}`;
+    const countryName = window.translateCountry ? window.translateCountry(team.name) : team.name;
+    flagEl.alt = `Bandera de ${countryName}`;
     flagEl.style.display = '';
   } else {
     flagEl.removeAttribute('src');
