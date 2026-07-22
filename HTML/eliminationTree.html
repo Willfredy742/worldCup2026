@@ -4,378 +4,225 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../CSS/eliminationTree.css" />
-    <link rel="stylesheet" href="../JS/HeaderNav.js">
-    <link rel="stylesheet" href="../CSS/HeaderNav.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Árbol de eliminatorias</title>
   </head>
+
   <body>
+    <header-nav></header-nav>
 
     <header>
-      <header-nav></header-nav>
+      <h2>Eliminatorias</h2>
     </header>
 
-    <h2>Eliminatorias</h2>
-    <div class="round-labels">
-      <h4>Dieciseisavos de final</h4>
-      <h4>Octavos de final</h4>
-      <h4>Cuartos de final</h4>
-      <h4>Semifinal</h4>
-      <div class="final-labels">
-        <h3>Final</h3>
-        <h3>Partido por el tercer puesto</h3>
-      </div>
-      <h4>Semifinal</h4>
-      <h4>Cuartos de final</h4>
-      <h4>Octavos de final</h4>
-      <h4>Dieciseisavos de final</h4>
-    </div>
     <main>
-      <section id="sideA">
-        <section id="roundOf32sideA">
-          <div class="match" id="537415" data-fifa-number="p74">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+      <section id="sideA" aria-label="Lado A">
+        <section id="roundOf32SideA" aria-label="Dieciseisavos de final - Lado A">
+          <div class="match" data-match-id="537415" data-fifa-number="p74">
+            <h4 class="matchTitle">Dieciseisavos de final</h4>
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
-          <div class="match" id="537416" data-fifa-number="p77">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+          <div class="match" data-match-id="537416" data-fifa-number="p77">
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
-          <div class="match" id="537417" data-fifa-number="p73">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+          <div class="match" data-match-id="537417" data-fifa-number="p73">
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
-          <div class="match" id="537418" data-fifa-number="p75">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+          <div class="match" data-match-id="537418" data-fifa-number="p75">
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
-          <div class="match" id="537419" data-fifa-number="p83">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+          <div class="match" data-match-id="537419" data-fifa-number="p83">
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
-          <div class="match" id="537420" data-fifa-number="p84">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+          <div class="match" data-match-id="537420" data-fifa-number="p84">
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
-          <div class="match" id="537421" data-fifa-number="p81">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+          <div class="match" data-match-id="537421" data-fifa-number="p81">
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
-          <div class="match" id="537422" data-fifa-number="p82">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+          <div class="match" data-match-id="537422" data-fifa-number="p82">
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
         </section>
-        <section id="roundOf16sideA">
-          <div class="match" id="537375" data-fifa-number="p89">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+        <section id="roundOf16SideA" aria-label="Octavos de final - Lado A">
+          <div class="match" data-match-id="537375" data-fifa-number="p89">
+            <h4 class="matchTitle">Octavos de final</h4>
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
-          <div class="match" id="537376" data-fifa-number="p90">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+          <div class="match" data-match-id="537376" data-fifa-number="p90">
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
-          <div class="match" id="537379" data-fifa-number="p93">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+          <div class="match" data-match-id="537379" data-fifa-number="p93">
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
-          <div class="match" id="537380" data-fifa-number="p94">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+          <div class="match" data-match-id="537380" data-fifa-number="p94">
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
         </section>
-        <section id="quarterfinalSideA">
-          <div class="match" id="537383" data-fifa-number="p97">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+        <section id="quarterfinalSideA" aria-label="Cuartos de final - Lado A">
+          <div class="match" data-match-id="537383" data-fifa-number="p97">
+            <h4 class="matchTitle">Cuartos de final</h4>
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
-          <div class="match" id="537384" data-fifa-number="p98">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+          <div class="match" data-match-id="537384" data-fifa-number="p98">
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
         </section>
-        <section id="semifinalSideA">
-          <div class="match" id="537387" data-fifa-number="p101">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+        <section id="semifinalSideA" aria-label="Semifinal - Lado A">
+          <div class="match" data-match-id="537387" data-fifa-number="p101">
+            <h4 class="matchTitle">Semifinal</h4>
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
         </section>
       </section>
-      <section id="final">
-        <div class="match" id="537390" data-fifa-number="p104">
-          <div class="team" data-slot="home">
-            <img class="team-flag" alt="" />
-            <span class="team-tla"></span>
-          </div>
-          <div class="team" data-slot="away">
-            <img class="team-flag" alt="" />
-            <span class="team-tla"></span>
-          </div>
+
+      <section id="final" aria-label="Final">
+        <div class="match" data-match-id="537390" data-fifa-number="p104">
+          <h3 class="matchTitle">Final</h3>
+          <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+          <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
         </div>
       </section>
-      <section id="thirdAndFourPlace">
-        <div class="match" id="537389" data-fifa-number="p103">
-          <div class="team" data-slot="home">
-            <img class="team-flag" alt="" />
-            <span class="team-tla"></span>
-          </div>
-          <div class="team" data-slot="away">
-            <img class="team-flag" alt="" />
-            <span class="team-tla"></span>
-          </div>
+
+      <section id="thirdAndFourthPlace" aria-label="Partido por el tercer puesto">
+        <div class="match" data-match-id="537389" data-fifa-number="p103">
+          <h3 class="matchTitle">Partido por el tercer puesto</h3>
+          <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+          <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
         </div>
       </section>
-      <section id="sideB">
-        <section id="roundOf32sideB">
-          <div class="match" id="537423" data-fifa-number="p76">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+      <section id="sideB" aria-label="Lado B">
+        <section id="roundOf32SideB" aria-label="Dieciseisavos de final - Lado B">
+          <div class="match" data-match-id="537423" data-fifa-number="p76">
+            <h4 class="matchTitle">Dieciseisavos de final</h4>
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
-          <div class="match" id="537424" data-fifa-number="p78">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+          <div class="match" data-match-id="537424" data-fifa-number="p78">
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
-          <div class="match" id="537425" data-fifa-number="p79">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+          <div class="match" data-match-id="537425" data-fifa-number="p79">
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
-          <div class="match" id="537426" data-fifa-number="p80">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+          <div class="match" data-match-id="537426" data-fifa-number="p80">
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
-          <div class="match" id="537427" data-fifa-number="p86">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+          <div class="match" data-match-id="537427" data-fifa-number="p86">
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
-          <div class="match" id="537428" data-fifa-number="p88">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+          <div class="match" data-match-id="537428" data-fifa-number="p88">
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
-          <div class="match" id="537429" data-fifa-number="p85">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+          <div class="match" data-match-id="537429" data-fifa-number="p85">
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
-          <div class="match" id="537430" data-fifa-number="p87">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+          <div class="match" data-match-id="537430" data-fifa-number="p87">
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
         </section>
-        <section id="roundOf16sideB">
-          <div class="match" id="537377" data-fifa-number="p91">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+        <section id="roundOf16SideB" aria-label="Octavos de final - Lado B">
+          <div class="match" data-match-id="537377" data-fifa-number="p91">
+            <h4 class="matchTitle">Octavos de final</h4>
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
-          <div class="match" id="537378" data-fifa-number="p92">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+          <div class="match" data-match-id="537378" data-fifa-number="p92">
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
-          <div class="match" id="537381" data-fifa-number="p95">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+          <div class="match" data-match-id="537381" data-fifa-number="p95">
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
-          <div class="match" id="537382" data-fifa-number="p96">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+          <div class="match" data-match-id="537382" data-fifa-number="p96">
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
         </section>
-        <section id="quarterfinalSideB">
-          <div class="match" id="537385" data-fifa-number="p99">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+        <section id="quarterfinalSideB" aria-label="Cuartos de final - Lado B">
+          <div class="match" data-match-id="537385" data-fifa-number="p99">
+            <h4 class="matchTitle">Cuartos de final</h4>
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
-          <div class="match" id="537386" data-fifa-number="p100">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+          <div class="match" data-match-id="537386" data-fifa-number="p100">
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
         </section>
-        <section id="semifinalSideB">
-          <div class="match" id="537388" data-fifa-number="p102">
-            <div class="team" data-slot="home">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
-            <div class="team" data-slot="away">
-              <img class="team-flag" alt="" />
-              <span class="team-tla"></span>
-            </div>
+
+        <section id="semifinalSideB" aria-label="Semifinal - Lado B">
+          <div class="match" data-match-id="537388" data-fifa-number="p102">
+            <h4 class="matchTitle">Semifinal</h4>
+            <div class="team" data-slot="home"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
+            <div class="team" data-slot="away"><img class="teamFlag" alt="" /><span class="teamTla"></span></div>
           </div>
         </section>
       </section>
     </main>
-    <script src="../JS/eliminationTree.js"></script>
-    <script src="../JS/HeaderNav.js"></script>
+
+    <footer></footer>
+
+    <script src="../JS/HeaderNav.js" defer></script>
+    <script src="../JS/countryTranslations.js" defer></script>
+    <script src="../JS/eliminationTree.js" defer></script>
+    <script src="../JS/bracketLines.js" defer></script>
+    <script src="../JS/pathHighlight.js" defer></script>
+    <script src="../JS/footer.js" defer></script>
   </body>
 </html>
