@@ -1,67 +1,143 @@
-body{
-  margin: 0px;
+:root {
+  --colorBackground: #eaeaea;
+  --colorSurface: #ffffff;
+  --colorBorder: #000000;
+  --colorTextMuted: #888888;
+
+  --colorWin: #2ecc71;
+  --colorLoss: #e74c3c;
+
+  --colorGold: #ffd700;
+  --colorSilver: #c0c0c0;
+  --colorBronze: #cd7f32;
+
+  --spacingXs: 2px;
+  --spacingSm: 4px;
+  --spacingMd: 5px;
+  --spacingLg: 10px;
+  --spacingXl: 30px;
+  --spacingBracketLeft: 50px;
+
+  --borderWidthCard: 1px;
+  --borderWidthHighlight: 2px;
+  --borderRadiusCard: 5px;
+
+  --fontSizeCard: large;
+  --fontSizeSmall: 0.7em;
+  --letterSpacingSmall: 0.4px;
+
+  --scaleHover: 1.05;
+  --scaleChampion: 1.18;
+  --scaleRunnerUp: 1.12;
+  --scaleThird: 1.09;
+
+  --zIndexRaised: 10;
+
+  --shadowCard: 5px 5px 5px 0 rgba(0, 0, 0, 0.6);
+  --transitionCard: transform 0.2s ease, border-color 0.2s ease;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
-.team {
-  border: 1px solid black;
-  width: fit-content;
-  font-size: large;
-  margin: 10px;
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  padding: 5px;
-  border-radius: 5px;
-  gap: 5px;
-  width: 45%;
-}
-.team-flag {
-  width: 28px;
-  height: 20px;
-  object-fit: cover;
-  margin-right: 5px;
+
+body {
+  margin: 0;
+  background-color: var(--colorBackground);
 }
 
-.round-labels {
-  display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  margin-bottom: 10px;
-}
-.round-labels h4,
-.round-labels h3 {
-  margin: 0;
-}
-.final-labels {
+.team {
+  position: relative;
+  z-index: 1;
+
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  flex-direction: row;
+  gap: var(--spacingMd);
+
+  width: 60%;
+  margin: var(--spacingLg);
+  padding: var(--spacingMd);
+
+  border: var(--borderWidthCard) solid var(--colorBorder);
+  border-radius: var(--borderRadiusCard);
+
+  background-color: var(--colorSurface);
+  box-shadow: var(--shadowCard);
+
+  font-size: var(--fontSizeCard);
+  text-align: center;
+
+  cursor: pointer;
+  transform-origin: center;
+  transition: var(--transitionCard);
+}
+
+.team:hover {
+  transform: scale(var(--scaleHover));
+}
+
+.team.scaleChampion,
+.team.scaleChampion:hover {
+  transform: scale(var(--scaleChampion));
+}
+
+.team.scaleRunnerUp,
+.team.scaleRunnerUp:hover {
+  transform: scale(var(--scaleRunnerUp));
+}
+
+.team.scaleThird,
+.team.scaleThird:hover {
+  transform: scale(var(--scaleThird));
+}
+
+.team:hover,
+.team.scaleChampion,
+.team.scaleRunnerUp,
+.team.scaleThird {
+  z-index: var(--zIndexRaised);
+}
+
+.teamFlag {
+  width: 28px;
+  height: 20px;
+  margin-right: var(--spacingMd);
+  object-fit: cover;
 }
 
 main {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   grid-template-rows: repeat(8, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 30px;
-  height: 90vh;
+  gap: var(--spacingXl) 0;
+  min-height: 90vh;
+  margin-left: var(--spacingBracketLeft);
 }
 
 .match {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100%;
+  padding-top: 2em;
 }
 
-#sideA, #roundOf32sideA, #roundOf16sideA, #quarterfinalSideA, #semifinalSideA,
-#sideB, #roundOf32sideB, #roundOf16sideB, #quarterfinalSideB, #semifinalSideB {
+#sideA,
+#roundOf32SideA,
+#roundOf16SideA,
+#quarterfinalSideA,
+#semifinalSideA,
+#sideB,
+#roundOf32SideB,
+#roundOf16SideB,
+#quarterfinalSideB,
+#semifinalSideB {
   display: contents;
 }
 
-/* roundOf32sideA */
 [data-fifa-number="p74"] { grid-area: 1 / 1 / 2 / 2; }
 [data-fifa-number="p77"] { grid-area: 2 / 1 / 3 / 2; }
 [data-fifa-number="p73"] { grid-area: 3 / 1 / 4 / 2; }
@@ -71,36 +147,29 @@ main {
 [data-fifa-number="p81"] { grid-area: 7 / 1 / 8 / 2; }
 [data-fifa-number="p82"] { grid-area: 8 / 1 / 9 / 2; }
 
-/* roundOf16sideA */
 [data-fifa-number="p89"] { grid-area: 1 / 2 / 3 / 3; }
 [data-fifa-number="p90"] { grid-area: 3 / 2 / 5 / 3; }
 [data-fifa-number="p93"] { grid-area: 5 / 2 / 7 / 3; }
 [data-fifa-number="p94"] { grid-area: 7 / 2 / 9 / 3; }
 
-/* quarterfinalSideA */
 [data-fifa-number="p97"] { grid-area: 1 / 3 / 5 / 4; }
 [data-fifa-number="p98"] { grid-area: 5 / 3 / 9 / 4; }
 
-/* semifinalSideA */
 [data-fifa-number="p101"] { grid-area: 1 / 4 / 9 / 5; }
 
 #final { grid-area: 1 / 5 / 5 / 6; }
-#thirdAndFourPlace { grid-area: 5 / 5 / 9 / 6; }
+#thirdAndFourthPlace { grid-area: 5 / 5 / 9 / 6; }
 
-/* semifinalSideB */
 [data-fifa-number="p102"] { grid-area: 1 / 6 / 9 / 7; }
 
-/* quarterfinalSideB */
 [data-fifa-number="p99"] { grid-area: 1 / 7 / 5 / 8; }
 [data-fifa-number="p100"] { grid-area: 5 / 7 / 9 / 8; }
 
-/* roundOf16sideB */
 [data-fifa-number="p91"] { grid-area: 1 / 8 / 3 / 9; }
 [data-fifa-number="p92"] { grid-area: 3 / 8 / 5 / 9; }
 [data-fifa-number="p95"] { grid-area: 5 / 8 / 7 / 9; }
 [data-fifa-number="p96"] { grid-area: 7 / 8 / 9 / 9; }
 
-/* roundOf32sideB */
 [data-fifa-number="p76"] { grid-area: 1 / 9 / 2 / 10; }
 [data-fifa-number="p78"] { grid-area: 2 / 9 / 3 / 10; }
 [data-fifa-number="p79"] { grid-area: 3 / 9 / 4 / 10; }
@@ -109,3 +178,83 @@ main {
 [data-fifa-number="p88"] { grid-area: 6 / 9 / 7 / 10; }
 [data-fifa-number="p85"] { grid-area: 7 / 9 / 8 / 10; }
 [data-fifa-number="p87"] { grid-area: 8 / 9 / 9 / 10; }
+
+.team.champion {
+  border: var(--borderWidthHighlight) solid var(--colorGold);
+}
+
+.team.runnerUp {
+  border: var(--borderWidthHighlight) solid var(--colorSilver);
+}
+
+.team.thirdPlace {
+  border: var(--borderWidthHighlight) solid var(--colorBronze);
+}
+
+.team.hlWin {
+  border-color: var(--colorWin);
+}
+
+.team.hlLoss {
+  border-color: var(--colorLoss);
+}
+
+.team.hlChampion {
+  border-color: var(--colorGold);
+}
+
+.team.hlRunnerUp {
+  border-color: var(--colorSilver);
+}
+
+.team.hlThird {
+  border-color: var(--colorBronze);
+}
+
+.matchStatus {
+  order: -1;
+
+  width: 60%;
+  margin: 0 0 var(--spacingXs);
+
+  font-size: var(--fontSizeSmall);
+  color: var(--colorTextMuted);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: var(--letterSpacingSmall);
+  line-height: 1;
+}
+
+.teamScore {
+  margin-left: auto;
+
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--spacingSm);
+
+  white-space: nowrap;
+}
+
+.teamGoals {
+  font-weight: 700;
+}
+
+.teamPen {
+  color: var(--colorLoss);
+  font-size: var(--fontSizeSmall);
+  font-weight: 600;
+}
+
+.matchTitle {
+  order: -2;
+
+  width: 58%;
+  margin: 0 0 var(--spacingLg);
+
+  text-align: center;
+  line-height: 1.1;
+}
+
+h2 {
+  margin: 2% 0 0 2%;
+}
