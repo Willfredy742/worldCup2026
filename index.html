@@ -3,8 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
     <title>Copa del Mundo 2026</title>
     <link rel="stylesheet" href="CSS/index.css" />
+    <link rel="stylesheet" href="CSS/footer.css">
+    <link rel="stylesheet" href="JS/HeaderNav.js">
   </head>
   <body>
     <header>
@@ -16,19 +22,19 @@
     
     <nav>
       <div class="NavItem">
-          <a class="NavLink" href="../index.html">Inicio</a>
+          <a class="NavLink" href="index.html">Inicio</a>
       </div>
       <div class="NavItem">
-          <a class="NavLink" href="../HTML/gamesResult.html">Resultados</a>
+          <a class="NavLink" href="HTML/gamesResult.html">Resultados</a>
       </div>
       <div class="NavItem">
-          <a class="NavLink" href="../HTML/Groups.html">Grupos</a>
+          <a class="NavLink" href="HTML/Groups.html">Grupos</a>
       </div>
       <div class="NavItem">
-          <a class="NavLink" href="../HTML/eliminationTree.html">Eliminatorias</a>
+          <a class="NavLink" href="HTML/eliminationTree.html">Eliminatorias</a>
       </div>
       <div class="NavItem">
-          <a class="NavLink" href="../HTML/stadistics.html">Estadisticas</a>
+          <a class="NavLink" href="HTML/stadistics.html">Estadisticas</a>
       </div>
     </nav>
 
@@ -164,10 +170,54 @@
   </div>
 </section>
     </main>
+    
     <footer>
+     <img
+  class="footer-logo"
+  src="img/fifaWorldCup2026Logo.svg"
+  alt="Logo de la FIFA World Cup 2026"
+/>
 
-    </footer>
+<div class="footer-content">
+  <div class="footer-info">
+    <div class="footer-social">
+      <img src="img/x.svg" alt="Logo de la red social X (Twitter)" />
+      <img
+        src="img/facebook.svg"
+        alt="Logo de la red social Facebook"
+      />
+      <img
+        src="img/instagram.svg"
+        alt="Logo de la red social Instagram"
+      />
+      <img src="img/tiktok.svg" alt="Logo de la red social TikTok" />
+    </div>
 
+    <div class="footer-text">
+      <p>
+        Datos provenientes de la API
+        <a href="https://www.football-data.org/" target="_blank"
+          >football-data.org.</a
+        >
+        La web ha sido creada con fines educativos. No se infringen derechos de
+        autor.
+      </p>
+    </div>
+  </div>
+
+  <ul class="footer-links">
+    <li>Política de privacidad</li>
+    <li>Términos de servicio</li>
+    <li>Ajustar la configuración de las cookies</li>
+  </ul>
+</div>
+
+    </footer>   
+    
+    
     <script src="JS/topTeams.js"></script>
+    <script src="/JS/HeaderNav.js"></script>
+    
+    
   </body>
 </html>

@@ -1,431 +1,50 @@
 body {
-    font-family: 'Arial Black', 'Arial', sans-serif;
+    
     background-color: #e6e6e6;
-    margin: 0px;
-    padding: 20px;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
     color: #000000;
 }
 
 header {
+    width: 100vw;
+    max-width: 100%;
     height: 280px;
     display: flex;
     justify-content: center;
-
+    align-items: center;
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
         url("../Img/OrganitatorsCountry.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
     margin: 0px 0px -60px 0px;
+    padding: 20px 0;
 }
 
-    .TitleAndLogo {
-        margin-top: -60px;
-        display: flex;
-        align-items: center;
-        gap: 25px;
-    }
-    
-    .HeaderLogo {
-        width: auto;
-        height: 100px;
-    }
-    
-    .HeaderTitle {
-        color: #ffd700;
-    
-        font-family: "Inter", sans-serif;
-        font-size: 50px;
-    
-        text-shadow:
-            -1px -1px 0 black,
-            1px -1px 0 black,
-            -1px 1px 0 black,
-            1px 1px 0 black;
-    }
-
-nav {
+.TitleAndLogo {
+    margin-top: -60px;
     display: flex;
-    justify-content: space-between;
-    margin-left: 50px;
-    margin-right: 50px;
-}
-
-    .NavItem {
-        background-color: #e61d25;
-        padding: 10px 25px;
-        border-radius: 12px;
-    }
-
-    .NavLink {
-        text-decoration: none;
-        color: white;
-    }
-
-.startHeader {
-    text-align: left;
-    margin-bottom: 30px;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.startHeader h1 {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    font-style: italic;
-    font-weight: 900;
-}
-
-.startHeader p {
-    font-family: 'Arial', sans-serif;
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #000000;
-    line-height: 1.4;
-    max-width: 1000px;
-}
-
-.matchesPanel {
-    max-width: 1200px;
-    margin: 0 auto 50px auto;
-    background-color: #9e2222;
-    padding: 50px 30px;
-    border-radius: 35px;
-}
-
-.matchesGrid {
-    display: flex;
-    justify-content: center;
     align-items: center;
     gap: 25px;
-    flex-wrap: wrap;
 }
 
-.pastMatches, .currentMatches, .futureMatches {
-    border-radius: 25px;
-    padding: 15px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #000000;
-    font-weight: 900;
-}
-
-.pastMatches img, .currentMatches img, .futureMatches img {
-    width: 65px;
-    height: 45px;
-    object-fit: cover;
-    border-radius: 12px;
-    border: 3px solid #ffffff;
-}
-
-.pastMatches img:not([src]), 
-.pastMatches img[src=""],
-.currentMatches img:not([src]), 
-.currentMatches img[src=""],
-.futureMatches img:not([src]), 
-.futureMatches img[src=""] {
-    visibility: hidden;
-}
-
-.teamsVersusPast, .teamsVersusCurrent, .teamsVersusFuture {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin: 8px 0;
-}
-
-.vsText {
-    font-size: 18px;
-    font-weight: 900;
-    font-style: italic;
-}
-
-.past {
-    background-color: #1eff43;
-    width: 220px;
-    height: 150px;
-    font-size: 14px;
-}
-
-.past .statusPast {
-    font-style: italic;
-    font-size: 18px;
-    margin-bottom: 5px;
-}
-
-.past .scorePast {
-    font-size: 16px;
-    margin-top: 2px;
-}
-
-.current {
-    background-color: #173cd3;
-    width: 380px;
-    height: 250px;
-    color: #ffffff;
-    font-size: 24px;
-    border-radius: 30px;
-}
-
-.current .statusCurrent {
-    font-style: italic;
-    font-size: 36px;
-    margin-bottom: 15px;
-}
-
-.current .scoreCurrent {
-    font-style: italic;
-    font-size: 36px;
-    margin-top: 15px;
-}
-
-.current .teamsVersusCurrent {
-    gap: 20px;
-}
-
-.current .vsText {
-    font-size: 32px;
-    white-space: nowrap;
-    z-index: 1;
-}
-
-.current img {
-    width: 110px;
-    height: 80px;
-    border-radius: 18px;
-    border: 4px solid #ffffff;
-}
-
-.future {
-    background-color: #e6ff00;
-    width: 220px;
-    height: 150px;
-    font-size: 14px;
-}
-
-.future .statusFuture {
-    font-style: italic;
-    font-size: 18px;
-    margin-bottom: 5px;
-}
-
-.future .timeFuture {
-    font-size: 16px;
-    margin-top: 2px;
-}
-
-.topPlayersSection {
-    max-width: 1200px;
-    margin: 0 auto 50px auto;
-}
-
-.topPlayersSection h2 {
-    font-size: 2.2rem;
-    margin-bottom: 20px;
-    font-style: italic;
-    font-weight: 900;
-    text-align: left;
-}
-
-.topPlayersContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    background-color: transparent;
-}
-
-.podiumVisual {
-    flex: 1;
-    min-width: 300px;
-    max-width: 500px;
-    display: flex;
-    justify-content: center;
-}
-
-.podiumWrapper {
-    position: relative;
-    width: 100%;
-    display: inline-block;
-}
-
-.podiumBg {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.playerOnPodium {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.playerPhoto {
-    object-fit: contain;
-    display: block;
-    max-height: 140px;
+.HeaderLogo {
     width: auto;
+    height: 100px;
 }
 
-.playerPhoto:not([src]), 
-.playerPhoto[src=""] {
-    visibility: hidden;
+.HeaderTitle {
+    color: #ffd700;
+    font-family: "Inter", sans-serif;
+    font-size: 50px;
+    text-shadow:
+        -1px -1px 0 black,
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
 }
-
-.posFirst {
-    bottom: 49%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
-}
-
-.posFirst .playerPhoto {
-    width: 135px;
-}
-
-.posSecond {
-    bottom: 34%;
-    left: 21%;
-    transform: translateX(-50%);
-    z-index: 1;
-}
-
-.posSecond .playerPhoto {
-    width: 110px;
-}
-
-.posThird {
-    bottom: 29%;
-    left: 79%;
-    transform: translateX(-50%);
-    z-index: 1;
-}
-
-.posThird .playerPhoto {
-    width: 105px;
-}
-
-.statsTableContainer {
-    flex: 1.2;
-    min-width: 350px;
-    background-color: #ffffff;
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
-
-.statsTable {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: center;
-}
-
-.statsTable th {
-    font-family: 'Arial Black', sans-serif;
-    color: #000000;
-    font-style: italic;
-    font-size: 1rem;
-    padding: 12px 8px;
-    border-bottom: 2px solid #e6e6e6;
-}
-
-.colStatsPlayer {
-    text-align: left;
-}
-
-.statsTable td {
-    padding: 15px 10px;
-    border-bottom: 1px solid #f2f2f2;
-    vertical-align: middle;
-    font-family: 'Arial', sans-serif;
-    font-weight: bold;
-}
-
-.statsTable th:nth-child(2),
-.statsTable td:nth-child(2),
-.statsTable th:nth-child(3),
-.statsTable td:nth-child(3) {
-    border-right: 1px solid #000000;
-}
-
-.playerDetail {
-    text-align: left;
-}
-
-.statsName {
-    display: block;
-    font-family: 'Arial Black', sans-serif;
-    font-size: 1.1rem;
-    color: #000000;
-}
-
-.statsMeta {
-    display: block;
-    font-size: 0.85rem;
-    color: #7f8c8d;
-    margin-top: 2px;
-}
-
-.statNumber {
-    font-size: 1.2rem;
-    color: #000000;
-}
-
-body {
-    font-family: 'Arial Black', 'Arial', sans-serif;
-    background-color: #e6e6e6;
-    margin: 0px;
-    padding: 20px;
-    color: #000000;
-}
-
-header {
-    height: 280px;
-    display: flex;
-    justify-content: center;
-
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url("../Img/OrganitatorsCountry.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    margin: 0px 0px -60px 0px;
-}
-
-    .TitleAndLogo {
-        margin-top: -60px;
-        display: flex;
-        align-items: center;
-        gap: 25px;
-    }
-    
-    .HeaderLogo {
-        width: auto;
-        height: 100px;
-    }
-    
-    .HeaderTitle {
-        color: #ffd700;
-    
-        font-family: "Inter", sans-serif;
-        font-size: 50px;
-    
-        text-shadow:
-            -1px -1px 0 black,
-            1px -1px 0 black,
-            -1px 1px 0 black,
-            1px 1px 0 black;
-    }
 
 nav {
     display: flex;
@@ -434,16 +53,21 @@ nav {
     margin-right: 50px;
 }
 
-    .NavItem {
-        background-color: #e61d25;
-        padding: 10px 25px;
-        border-radius: 12px;
-    }
+.NavItem {
+    background-color: #e61d25;
+    padding: 10px 25px;
+    border-radius: 12px;
+}
 
-    .NavLink {
-        text-decoration: none;
-        color: white;
-    }
+.NavLink {
+    text-decoration: none;
+    color: white;
+    font-family: "Inter", sans-serif;
+}
+
+main {
+    font-family: 'Arial Black', 'Arial', sans-serif;
+}
 
 .startHeader {
     text-align: left;
