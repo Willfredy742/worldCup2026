@@ -1,95 +1,134 @@
-﻿# FIFA World Cup 2026
-Proyecto web informativo sobre la **FIFA World Cup 2026**, desarrollado como parte de un trabajo colaborativo usando **HTML, CSS y JavaScript**.
+﻿﻿# FIFA World Cup 2026
 
-La web permitirá consultar información principal del torneo, próximos partidos, resultados, clasificación por grupos, árbol de eliminatorias y estadísticas relevantes.
+Proyecto web informativo e interactivo sobre la **Copa Mundial de la FIFA 2026**, desarrollado con **HTML5**, **CSS3** y **JavaScript**.
 
-## Integrantes
+---
 
-- Juan Camilo Piamba
-- Jesus Gonzalez Gomez
-- Wilfredy Salcedo
-- Oscar Eduardo Perez R.
+## 📌 Descripción del proyecto
 
-## Descripción del Proyecto
+Este proyecto presenta una experiencia de usuario diseñada para seguir el torneo completo de la Copa del Mundo 2026. Incluye:
 
-El presidente de la federación de fútbol solicita la creación de una página web para la **World Cup 2026**.
+- Página principal de bienvenida con resumen del torneo y panel de destacados.
+- Página de resultados de partidos con filtros y datos dinámicos.
+- Clasificaciones de grupos con información de posiciones, goles y puntos.
+- Árbol de eliminatorias para visualizar el camino hacia la final.
+- Estadísticas del torneo con rankings de equipos y jugadores.
 
-El objetivo principal es construir una web clara, organizada y visualmente atractiva, cuidando especialmente la estructura HTML, el diseño CSS, la calidad del código JavaScript y la experiencia del usuario.
+El sitio está construido como un proyecto educativo y demostrativo de buenas prácticas web.
 
-## Tecnologías Utilizadas
+---
+
+## 🧩 Estructura del proyecto
+
+- `index.html` — Página de inicio
+- `HTML/Groups.html` — Clasificación por grupos
+- `HTML/gamesResult.html` — Resultados y partidos
+- `HTML/eliminationTree.html` — Árbol de eliminatorias
+- `HTML/stadistics.html` — Estadísticas del torneo
+- `CSS/` — Estilos para cada página
+- `JS/` — Lógica de interacción y generación dinámica de datos
+- `JSON/` — Datos locales de ejemplo para la aplicación
+- `Img/` — Recursos de imagen utilizados en la web
+
+---
+
+## 🎯 Objetivos del proyecto
+
+1. Crear una experiencia visual atractiva y coherente con el tema de la Copa Mundo 2026.
+2. Diseñar una estructura HTML semántica y accesible.
+3. Desarrollar interacción con JavaScript para mostrar datos dinámicos.
+4. Aplicar estilos responsivos que funcionen correctamente en dispositivos móviles y de escritorio.
+5. Documentar el proyecto para facilitar su presentación y mantenimiento.
+
+---
+
+## 🧪 Tecnologías utilizadas
 
 - HTML5
 - CSS3
 - JavaScript
-- Figma
-- Git
-- GitHub
-- GitHub Pages
-- GitHub Projects
-- Vercel
-- API Football Data
+- JSON local
+- Fuentes de Google Fonts
 
-## API Utilizada
+---
 
-El proyecto utilizará la API de Football Data:
+## 👥 Equipo de trabajo
 
-[https://www.football-data.org/](https://www.football-data.org/)
+- Juan Camilo Piamba
+- Jesús González Gómez
+- Wilfredy Salcedo
+- Oscar Eduardo Perez
 
-Esta API permitirá obtener datos relacionados con partidos, resultados, equipos, clasificaciones y estadísticas.
+---
 
-## Estructura Principal de la Web
+## 📁 Detalle de páginas
 
-Todas las páginas deberán contar con una estructura semántica clara:
+### 1. Inicio
+- Bienvenida al torneo.
+- Mostrar champión, top de jugadores y top de equipos.
+- Navegación principal a todas las secciones.
 
-- `HEADER`
-- `MAIN`
-- `FOOTER`
+### 2. Resultados
+- Lista de partidos con estados programado, en vivo y finalizado.
+- Datos de marcador y detalles del encuentro.
 
-## Secciones de la Web
+### 3. Grupos
+- Tabla de posiciones por grupo.
+- Estadísticas de partidos jugados, ganados, empatados, perdidos, goles y puntos.
 
-### 1. Página de Bienvenida
+### 4. Eliminatorias
+- Árbol de fase final.
+- Visualización de cruces y rutas hacia la final.
 
-Portal principal de bienvenida a la Copa del Mundo 2026.
+### 5. Estadísticas
+- Rankings de goleadores.
+- Equipos con mejores registros.
+- Métricas de rendimiento del torneo.
 
-Incluye una introducción al torneo y accesos rápidos a las secciones más importantes de la web.
+---
 
-### 2. Próximos Partidos y Resultados
+## 🖼 Capturas de pantalla
 
-Agenda completa del torneo con filtros por estado del partido:
+### Página principal
+- Inicio: ![Captura de pantalla de la página de Inicio](Img/screenshots/index.png)
 
-- Programados: próximos partidos con fecha y hora.
-- En vivo: partidos en disputa con marcador actualizado.
-- Finalizados: resultados definitivos.
-- Todos: vista general del calendario completo.
+### Resultados
+- Resultados: ![Captura de pantalla de la página de Resultados](Img/screenshots/results.png)
 
-### 3. Clasificación por Grupos
+### Grupos
+- Grupos: ![Captura de pantalla de la página de Grupos](Img/screenshots/groups.png)
 
-Tabla de posiciones de la fase de grupos.
+### Eliminatorias
+- Eliminatorias: ![Captura de pantalla de la página de Eliminatorias](Img/screenshots/eliminationTree.png)
 
-Mostrará información como:
+### Estadísticas
+- Estadísticas: ![Captura de pantalla de la página de Estadísticas](Img/screenshots/statistics.png)
 
-- Puntos
-- Partidos jugados
-- Victorias
-- Empates
-- Derrotas
-- Diferencia de goles
+---
 
-### 4. Árbol de Eliminatorias
+## 🌐 Enlace de despliegue
 
-Cuadro interactivo de la fase final del torneo.
+- Vercel: [Enlace a Vercel](https://world-cup2026-henna-chi.vercel.app/)
 
-Permitirá visualizar el camino de cada selección desde las rondas eliminatorias hasta la gran final.
+---
 
-### 5. Estadísticas del Torneo
+## 🚀 Cómo ejecutar el proyecto localmente
 
-Sección dedicada a datos y rankings del campeonato:
+1. Clona o descarga el repositorio.
+2. Abre la carpeta del proyecto en tu editor.
+3. Abre `index.html` en el navegador o usa una extensión de servidor local.
 
-- Máximos goleadores
-- Equipos más goleadores
-- Equipos con más goles encajados
+> Si usas VS Code, instala `Live Server` y abre el archivo con `Open with Live Server`.
 
-## Diseño
+---
 
-El diseño del proyecto será realizado previamente en **Figma**.
+## 📝 Notas adicionales
 
+- El proyecto está pensado para ser un prototipo informativo y educativo.
+- Las rutas de imagen y los recursos deben mantenerse consistentes con la estructura de la carpeta.
+
+---
+
+## 📬 Contacto
+
+Para dudas o mejoras, contactar al equipo de desarrollo.
