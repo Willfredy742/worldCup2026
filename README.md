@@ -1,4 +1,4 @@
-﻿﻿# FIFA World Cup 2026
+# FIFA World Cup 2026
 
 Proyecto web informativo e interactivo sobre la **Copa Mundial de la FIFA 2026**, desarrollado con **HTML5**, **CSS3** y **JavaScript**.
 
@@ -90,19 +90,19 @@ El sitio está construido como un proyecto educativo y demostrativo de buenas pr
 ## 🖼 Capturas de pantalla
 
 ### Página principal
-- Inicio: ![Captura de pantalla de la página de Inicio](Img/screenshots/index.png)
+- Inicio: ![Captura de pantalla de la página de Inicio](img/screenshots/index.png)
 
 ### Resultados
-- Resultados: ![Captura de pantalla de la página de Resultados](Img/screenshots/results.png)
+- Resultados: ![Captura de pantalla de la página de Resultados](img/screenshots/results.png)
 
 ### Grupos
-- Grupos: ![Captura de pantalla de la página de Grupos](Img/screenshots/groups.png)
+- Grupos: ![Captura de pantalla de la página de Grupos](img/screenshots/groups.png)
 
 ### Eliminatorias
-- Eliminatorias: ![Captura de pantalla de la página de Eliminatorias](Img/screenshots/eliminationTree.png)
+- Eliminatorias: ![Captura de pantalla de la página de Eliminatorias](img/screenshots/eliminationTree.png)
 
 ### Estadísticas
-- Estadísticas: ![Captura de pantalla de la página de Estadísticas](Img/screenshots/statistics.png)
+- Estadísticas: ![Captura de pantalla de la página de Estadísticas](img/screenshots/statistics.png)
 
 ---
 
