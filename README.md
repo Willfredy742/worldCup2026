@@ -4,6 +4,12 @@ Proyecto web informativo e interactivo sobre la **Copa Mundial de la FIFA 2026**
 
 ---
 
+## 🌐 Enlace de despliegue
+
+- Vercel: [Enlace a Vercel](https://world-cup2026-henna-chi.vercel.app/)
+
+---
+
 ## 📌 Descripción del proyecto
 
 Este proyecto presenta una experiencia de usuario diseñada para seguir el torneo completo de la Copa del Mundo 2026. Incluye:
@@ -103,12 +109,6 @@ El sitio está construido como un proyecto educativo y demostrativo de buenas pr
 
 ### Estadísticas
 - Estadísticas: ![Captura de pantalla de la página de Estadísticas](img/screenshots/statistics.png)
-
----
-
-## 🌐 Enlace de despliegue
-
-- Vercel: [Enlace a Vercel](https://world-cup2026-henna-chi.vercel.app/)
 
 ---
 
